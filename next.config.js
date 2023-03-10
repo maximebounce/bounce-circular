@@ -14,4 +14,13 @@ module.exports = withBundleAnalyzer({
   // So, the source code is "basePath-ready".
   // You can remove `basePath` if you don't need it.
   reactStrictMode: true,
+  async rewrites() {
+    return [
+      {
+        source: '/api/n8n',
+        destination:
+          'https://bouncesports.app.n8n.cloud/webhook-test/10022ab0-8651-409d-bb55-a1739efd1cfa',
+      },
+    ];
+  },
 });
