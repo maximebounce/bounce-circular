@@ -16,13 +16,8 @@ const Main = (props: IMainProps) => {
     const url = '/api/n8n';
     const username = 'bounce';
     const password = 'bounce';
-
     const headers = new Headers();
     headers.set('Authorization', `Basic ${btoa(`${username}:${password}`)}`);
-    // headers.set('Origin', 'http://localhost:3000');
-    // headers.set('Access-Control-Allow-Origin', 'http://localhost:3000');
-    // headers.set('Access-Control-Allow-Credentials', 'true');
-    // headers.set('mode', 'no-cors');
 
     try {
       const res = await fetch(url, {
