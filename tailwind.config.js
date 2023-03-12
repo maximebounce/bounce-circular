@@ -2,6 +2,9 @@
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
+    fontFamily: {
+      sans: ['Helvetica', 'Arial', 'sans-serif'],
+    },
     fontSize: {
       xs: '0.75rem',
       sm: '0.875rem',
@@ -37,6 +40,11 @@ module.exports = {
           700: '#2b6cb0',
           800: '#2c5282',
           900: '#2a4365',
+        },
+        bounce: {
+          100: '#F9F5F3',
+          200: '#0a121b',
+          300: '#E9351A',
         },
       },
     },

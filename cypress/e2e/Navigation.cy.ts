@@ -9,11 +9,11 @@ describe('Navigation', () => {
         name: 'Boilerplate code for your Nextjs project with Tailwind CSS',
       });
 
-      // Find a link containing "About" text and click it
-      cy.findByRole('link', { name: 'About' }).click();
+      // Find a link containing "Faq" text and click it
+      cy.findByRole('link', { name: 'Faq' }).click();
 
       // The new url should include "/about"
-      cy.url().should('include', '/about');
+      cy.url().should('include', '/faq');
 
       // The new page should contain two "lorem ipsum" paragraphs
       cy.findAllByText('Lorem ipsum dolor sit amet', { exact: false }).should(
@@ -33,13 +33,13 @@ describe('Navigation', () => {
       cy.percySnapshot('Homepage');
     });
 
-    it('should take screenshot of the About page', () => {
-      cy.visit('/about');
+    it('should take screenshot of the Faq page', () => {
+      cy.visit('/faq');
 
       // Wait until the page is displayed
-      cy.findByRole('link', { name: 'About' });
+      cy.findByRole('link', { name: 'Faq' });
 
-      cy.percySnapshot('About');
+      cy.percySnapshot('Faq');
     });
   });
 });

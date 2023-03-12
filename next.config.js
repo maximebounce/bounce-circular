@@ -19,7 +19,7 @@ module.exports = withBundleAnalyzer({
       {
         source: '/api/n8n',
         destination:
-          'https://bouncesports.app.n8n.cloud/webhook-test/10022ab0-8651-409d-bb55-a1739efd1cfa',
+          'https://bouncesports.app.n8n.cloud/webhook/10022ab0-8651-409d-bb55-a1739efd1cfa',
       },
     ];
   },
