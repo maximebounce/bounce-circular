@@ -9,6 +9,10 @@ const clubs: IClub[] = [
     clubId: '87b5a0d5-5306-4b1b-9b55-dbbd649d16ca',
     clubName: 'La Hulpe',
   },
+  {
+    clubId: 'b6f3f9a2-952d-4c71-8b45-4153c1513af3',
+    clubName: 'Geronsart',
+  },
 ];
 
 const Club = () => (

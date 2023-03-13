@@ -82,7 +82,7 @@ export default function Dashboard({ club }: { club: IClub }) {
       name: 'Nombre de collectes disponible',
       href: '#',
       icon: ArchiveBoxIcon,
-      amount: 2,
+      amount: club.numberCollectsAvailable,
     },
     {
       name: 'Date de début du contrat',
@@ -439,7 +439,7 @@ export default function Dashboard({ club }: { club: IClub }) {
                                 className="mr-1.5 h-5 w-5 shrink-0 text-gray-400"
                                 aria-hidden="true"
                               />
-                              Rue des marguerettie, 12 La hulpe
+                              {club.localisation}
                             </dd>
                           </dl>
                         </div>
