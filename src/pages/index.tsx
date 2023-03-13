@@ -1,6 +1,6 @@
 // import { useRouter } from 'next/router';
 
-import HeroSection from '@/layouts/HeroSection';
+import LandingPage from '@/layouts/LandingPage';
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
 
@@ -16,7 +16,7 @@ const Index = () => {
         />
       }
     >
-      <HeroSection></HeroSection>
+      <LandingPage></LandingPage>
     </Main>
   );
 };

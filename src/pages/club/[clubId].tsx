@@ -1,8 +1,7 @@
 import type { GetServerSideProps } from 'next';
 
 import type { IClub } from '@/interfaces/club';
-import Collects from '@/layouts/Collects';
-import Head from '@/layouts/Head';
+import Dashboard from '@/layouts/Dashboard';
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
 
@@ -28,8 +27,9 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 const Club = ({ club }: { club: IClub }) => {
   return (
     <Main meta={<Meta title={club.clubName} description={club.title!} />}>
-      <Head club={club}></Head>
-      <Collects club={club}></Collects>
+      {/* <Head club={club}></Head>
+      <Collects club={club}></Collects> */}
+      <Dashboard club={club}></Dashboard>
     </Main>
   );
 };

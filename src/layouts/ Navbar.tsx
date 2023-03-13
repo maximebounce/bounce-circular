@@ -72,13 +72,16 @@ export default function NavBar() {
                       {/* Profile dropdown */}
                       <Menu as="div" className="relative ml-3">
                         <div>
-                          <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                          {/* <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                             <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gray-500">
                               <span className="text-lg font-medium leading-none text-white">
                                 TW
                               </span>
                             </span>
-                          </Menu.Button>
+                          </Menu.Button> */}
+                          <Link href="/login" className="text-white">
+                            Se connecter
+                          </Link>
                         </div>
                         <Transition
                           as={Fragment}

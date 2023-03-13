@@ -1,4 +1,5 @@
 import type { ICollect } from './collect';
+import type { IContact } from './contact';
 
 export type IClub = {
   clubId: string;
@@ -6,5 +7,9 @@ export type IClub = {
   title?: string;
   startingDate?: string;
   numberCollects?: string;
+  contact?: IContact;
   collects?: ICollect[];
+  details?: string;
+  localisation?: string;
+  initial?: string;
 };
