@@ -49,6 +49,7 @@ export const getClubFromNotion = async (clubId: string) => {
       `${process.env.NEXT_PUBLIC_USERNAME_N8N}:${process.env.NEXT_PUBLIC_PASSWORD_N8N}`
     )}`
   );
+  console.log(urlApi, headers);
   try {
     const res = await fetch(urlApi, {
       method: 'POST',

@@ -5,6 +5,7 @@ import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
 
 export default function NotFound() {
+  console.log('NEXT_PUBLIC_USERNAME_N8N', process.env.NEXT_PUBLIC_USERNAME_N8N);
   return (
     <Main meta={<Meta title="Not Found" description="Not Found" />}>
       <div className="mx-auto flex h-screen flex-col justify-between">
