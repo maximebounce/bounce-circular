@@ -3,6 +3,8 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { Fragment } from 'react';
 
+import { useScrollPosition } from '@/hooks';
+
 const user = {
   name: 'Tom Cook',
   email: 'tom@example.com',
@@ -21,31 +23,43 @@ function classNames(...classes: string[]) {
 }
 
 export default function NavBar() {
+  const scrollPosition = useScrollPosition();
+
+  let image: any;
+  if (scrollPosition > 0) {
+    image = (
+      <img
+        className="h-6"
+        src="/assets/images/bounce_logo_white.png"
+        alt="Bounce Sports"
+      />
+    );
+  } else {
+    image = (
+      <img
+        className="h-10"
+        src="/assets/images/bounce-logo.png"
+        alt="Bounce Sports"
+      />
+    );
+  }
+
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-gray-100">
-        <body class="h-full">
-        ```
-      */}
-      <div>
-        <Disclosure as="nav" className="bg-bounce-200">
+      <div
+        className={classNames(
+          scrollPosition > 0 ? 'bg-bounce-200' : 'bg-bounce-100',
+          'sticky top-0 z-20'
+        )}
+      >
+        <Disclosure as="nav" className=" ">
           {({ open }) => (
             <>
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-6">
-                <div className="flex h-16 items-center justify-between">
+              <div className="mx-auto max-w-7xl px-2 sm:px-2 lg:px-2">
+                <div className="flex h-24 items-center justify-between">
                   <div className="flex items-center">
                     <div className="shrink-0">
-                      <Link href="/">
-                        <img
-                          className="h-6"
-                          src="/assets/images/bounce_logo_white.png"
-                          alt="Bounce Sports"
-                        />
-                      </Link>
+                      <Link href="/">{image}</Link>
                     </div>
                     {/* <div className="hidden md:block">
                       <div className="ml-10 flex items-baseline space-x-4">
@@ -79,9 +93,14 @@ export default function NavBar() {
                               </span>
                             </span>
                           </Menu.Button> */}
-                          <Link href="/login" className="text-white">
+                          <button className="mr-2 rounded-3xl border-2 border-bounce-200 bg-bounce-100 px-5 py-2.5 font-medium text-bounce-200 hover:border-2 hover:bg-bounce-200 hover:text-bounce-100">
+                            S&apos;inscrire
+                          </button>
+                          <button className="ml-2 rounded-3xl border-2 bg-bounce-200 px-5 py-2.5 font-medium text-bounce-100 hover:bg-bounce-100 hover:text-bounce-200">
                             Se connecter
-                          </Link>
+                          </button>
+
+                          {/* href="/login" */}
                         </div>
                         <Transition
                           as={Fragment}
@@ -113,9 +132,9 @@ export default function NavBar() {
                       </Menu>
                     </div>
                   </div>
-                  <div className="-mr-2 flex md:hidden">
+                  <div className="m-2 flex md:hidden">
                     {/* Mobile menu button */}
-                    <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-bounce-200 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="sr-only">Open main menu</span>
                       {open ? (
                         <XMarkIcon
@@ -134,7 +153,7 @@ export default function NavBar() {
               </div>
 
               <Disclosure.Panel className="md:hidden">
-                <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
+                <div className=" space-y-1 px-2 pt-2 pb-3 sm:px-3">
                   {navigation.map((item) => (
                     <Disclosure.Button
                       key={item.name}

@@ -35,12 +35,12 @@ export default function Footer() {
           </li>
         </ul>
       </div>
-      <div className="my-6 border-gray-200 dark:border-gray-700 sm:mx-auto lg:my-8"></div>
+      <div className="my-6 border-gray-200 sm:mx-auto lg:my-8"></div>
       {/* <hr className="my-6 border-gray-200 dark:border-gray-700 sm:mx-auto lg:my-8" /> */}
       <div className="sm:flex sm:items-center sm:justify-between">
-        <span className="text-sm text-gray-500 dark:text-gray-400 sm:text-center">
+        <span className="text-sm sm:text-center">
           © 2023{' '}
-          <a href="https://bouncesport.co/" className="hover:underline">
+          <a href="https://bouncesport.co/" className="text-bounce-300">
             Bounce Sports International™
           </a>
           . All Rights Reserved.

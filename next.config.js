@@ -17,9 +17,34 @@ module.exports = withBundleAnalyzer({
   async rewrites() {
     return [
       {
-        source: '/api/n8n',
+        source: '/api/auth/n8n/test',
+        destination:
+          'https://bouncesports.app.n8n.cloud/webhook-test/10022ab0-8651-409d-bb55-a1739efd1cfa',
+      },
+      {
+        source: '/api/auth/n8n',
         destination:
           'https://bouncesports.app.n8n.cloud/webhook/10022ab0-8651-409d-bb55-a1739efd1cfa',
+      },
+      {
+        source: '/api/club/n8n/test',
+        destination:
+          'https://bouncesports.app.n8n.cloud/webhook-test/877ad989-7f7c-49bb-b8b7-500f3ea578f0',
+      },
+      {
+        source: '/api/club/n8n',
+        destination:
+          'https://bouncesports.app.n8n.cloud/webhook/877ad989-7f7c-49bb-b8b7-500f3ea578f0',
+      },
+      {
+        source: '/api/collectRequest/n8n/test',
+        destination:
+          'https://bouncesports.app.n8n.cloud/webhook-test/193ad431-9c55-4679-bd8e-4b0f3bdc213f',
+      },
+      {
+        source: '/api/collectRequest/n8n',
+        destination:
+          'https://bouncesports.app.n8n.cloud/webhook/193ad431-9c55-4679-bd8e-4b0f3bdc213f',
       },
     ];
   },

@@ -1,4 +1,3 @@
-import NavBar from '@/layouts/ Navbar';
 import Foot from '@/layouts/Foot';
 import { Meta } from '@/layouts/Meta';
 import SignIn from '@/layouts/SignIn';
@@ -13,7 +12,7 @@ export default function Login() {
         }
       >
         <div className="mx-auto flex h-screen flex-col justify-between bg-bounce-100">
-          <NavBar></NavBar>
+          {/* <NavBar></NavBar> */}
           <SignIn></SignIn>
           <Foot></Foot>
         </div>

@@ -1,34 +1,17 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
-import type { IClub } from '@/interfaces/club';
+import { postAuthOnN8N } from '@/utils/api';
 
 export default function SignIn() {
   const router = useRouter();
   const [email, setEmail] = useState('');
 
   const postEmailToN8N = async (emailString: string) => {
-    const url = '/api/n8n';
-    const username = 'bounce';
-    const password = 'bounce';
-    const headers = new Headers();
-    headers.set('Authorization', `Basic ${btoa(`${username}:${password}`)}`);
-
-    try {
-      const res = await fetch(url, {
-        method: 'POST',
-        headers,
-        body: JSON.stringify({
-          email: emailString,
-        }),
-      });
-      const data: IClub = await res.json();
-      if (data.clubId) {
-        const clubUrl = `/club/${data.clubId}`;
-        router.push(clubUrl);
-      }
-    } catch (err) {
-      console.log(err);
+    const data = await postAuthOnN8N(emailString);
+    if (data && data.clubId) {
+      const clubUrl = `/club/${data.clubId}`;
+      router.push(clubUrl);
     }
   };
 

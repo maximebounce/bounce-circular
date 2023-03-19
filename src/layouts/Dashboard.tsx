@@ -19,10 +19,10 @@ import { Fragment, useState } from 'react';
 import type { IClub } from '@/interfaces/club';
 import type { ICollect } from '@/interfaces/collect';
 
+import Invoices from './components/dashboard/Invoices';
+import NewCollect from './components/dashboard/NewCollect';
+import Profile from './components/dashboard/Profile';
 import FaqComponent from './Faq';
-import Invoices from './Invoices';
-import NewCollect from './NewCollect';
-import Profile from './Profile';
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
@@ -35,7 +35,7 @@ export default function Dashboard({ club }: { club: IClub }) {
   const navigation = [
     { name: 'Dashboard', icon: HomeIcon },
     {
-      name: 'Invoices',
+      name: 'Factures',
       icon: DocumentChartBarIcon,
     },
   ];
@@ -123,7 +123,7 @@ export default function Dashboard({ club }: { club: IClub }) {
                 leaveFrom="translate-x-0"
                 leaveTo="-translate-x-full"
               >
-                <Dialog.Panel className="relative flex w-full max-w-xs flex-1 flex-col bg-cyan-700 pt-5 pb-4">
+                <Dialog.Panel className="relative flex w-full max-w-xs flex-1 flex-col bg-bounce-200 pt-5 pb-4">
                   <Transition.Child
                     as={Fragment}
                     enter="ease-in-out duration-300"
@@ -157,7 +157,7 @@ export default function Dashboard({ club }: { club: IClub }) {
                     </Link>
                   </div>
                   <nav
-                    className="mt-5 h-full shrink-0 divide-y divide-cyan-800 overflow-y-auto"
+                    className="mt-5 h-full shrink-0 divide-y divide-white overflow-y-auto"
                     aria-label="Sidebar"
                   >
                     <div className="space-y-1 px-2">
@@ -167,8 +167,8 @@ export default function Dashboard({ club }: { club: IClub }) {
                           onClick={() => setCurrentTab(item.name)}
                           className={classNames(
                             item.name === currentTab
-                              ? 'bg-cyan-800 text-white'
-                              : 'text-cyan-100 hover:bg-cyan-600 hover:text-white',
+                              ? 'bg-bounce-300 text-white'
+                              : 'text-white hover:bg-bounce-300 hover:text-white',
                             'group flex items-center rounded-md px-2 py-2 text-base font-medium'
                           )}
                           aria-current={
@@ -176,7 +176,7 @@ export default function Dashboard({ club }: { club: IClub }) {
                           }
                         >
                           <item.icon
-                            className="mr-4 h-6 w-6 shrink-0 text-cyan-200"
+                            className="mr-4 h-6 w-6 shrink-0 text-white"
                             aria-hidden="true"
                           />
                           {item.name}
@@ -189,10 +189,10 @@ export default function Dashboard({ club }: { club: IClub }) {
                           <a
                             key={item.name}
                             onClick={() => setCurrentTab(item.name)}
-                            className="group flex items-center rounded-md p-2 text-base font-medium text-cyan-100 hover:bg-cyan-600 hover:text-white"
+                            className="group flex items-center rounded-md p-2 text-base font-medium text-white hover:bg-bounce-300 hover:text-white"
                           >
                             <item.icon
-                              className="mr-4 h-6 w-6 text-cyan-200"
+                              className="mr-4 h-6 w-6 text-white"
                               aria-hidden="true"
                             />
                             {item.name}
@@ -273,7 +273,7 @@ export default function Dashboard({ club }: { club: IClub }) {
           <div className="flex h-16 shrink-0 border-b border-gray-200 bg-white lg:border-none">
             <button
               type="button"
-              className="border-r border-gray-200 px-4 text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500 lg:hidden"
+              className="border-r border-gray-200 px-4 text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset lg:hidden"
               onClick={() => setSidebarOpen(true)}
             >
               <span className="sr-only">Open sidebar</span>
@@ -408,23 +408,28 @@ export default function Dashboard({ club }: { club: IClub }) {
                         src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.6&w=256&h=256&q=80"
                         alt=""
                       /> */}
-                        <span className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-bounce-200">
+                        {/* <span className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-bounce-200">
                           <span className="text-lg font-medium leading-none text-white">
                             {club.initial}
                           </span>
-                        </span>
+                        </span> */}
                         <div>
                           <div className="flex items-center">
-                            <img
+                            {/* <img
                               className="h-16 w-16 rounded-full sm:hidden"
                               src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.6&w=256&h=256&q=80"
                               alt=""
-                            />
+                            /> */}
+                            <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-bounce-200">
+                              <span className="text-lg font-medium leading-none text-white">
+                                {club.initial}
+                              </span>
+                            </span>
                             <h1 className="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:leading-9">
                               Bonjour,
                             </h1>
                           </div>
-                          <dl className="mt-6 flex flex-col sm:ml-3 sm:mt-1 sm:flex-row sm:flex-wrap">
+                          <dl className="mt-6 flex flex-col sm:ml-3 sm:mt-1 sm:flex-row sm:flex-wrap sm:pt-4">
                             <dt className="sr-only">Club</dt>
                             <dd className="flex items-center text-sm font-medium capitalize text-gray-500 sm:mr-6">
                               <BuildingOfficeIcon
@@ -455,7 +460,7 @@ export default function Dashboard({ club }: { club: IClub }) {
                       <button
                         type="button"
                         onClick={() => setCurrentTab('newCollect')}
-                        className="inline-flex items-center rounded-md bg-bounce-300 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-bounce-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600"
+                        className="inline-flex items-center rounded-md bg-bounce-300 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-bounce-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
                       >
                         Programmer une collecte
                       </button>
@@ -683,7 +688,7 @@ export default function Dashboard({ club }: { club: IClub }) {
                           </tbody>
                         </table>
                         {/* Pagination */}
-                        <nav
+                        {/* <nav
                           className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6"
                           aria-label="Pagination"
                         >
@@ -708,7 +713,7 @@ export default function Dashboard({ club }: { club: IClub }) {
                               Suivant
                             </a>
                           </div>
-                        </nav>
+                        </nav> */}
                       </div>
                     </div>
                   </div>
@@ -718,8 +723,10 @@ export default function Dashboard({ club }: { club: IClub }) {
           )}
           {currentTab === 'Profile' && <Profile club={club}></Profile>}
           {currentTab === 'FAQ' && <FaqComponent></FaqComponent>}
-          {currentTab === 'Invoices' && <Invoices></Invoices>}
-          {currentTab === 'newCollect' && <NewCollect></NewCollect>}
+          {currentTab === 'Factures' && <Invoices></Invoices>}
+          {currentTab === 'newCollect' && (
+            <NewCollect clubName={club.clubName}></NewCollect>
+          )}
         </div>
       </div>
     </>

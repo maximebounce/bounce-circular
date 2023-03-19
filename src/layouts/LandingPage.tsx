@@ -1,12 +1,13 @@
 import NavBar from './ Navbar';
+import Landing from './components/landing-page/Landing';
 import Foot from './Foot';
-import HeroSection from './HeroSection';
 
 export default function LandingPage() {
   return (
-    <div className="mx-auto flex h-screen flex-col justify-between">
+    <div className="mx-auto flex  flex-col justify-between">
+      {/* h-screen */}
       <NavBar></NavBar>
-      <HeroSection></HeroSection>
+      <Landing></Landing>
       <Foot></Foot>
     </div>
   );
