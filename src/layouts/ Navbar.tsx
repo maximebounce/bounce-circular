@@ -1,6 +1,7 @@
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Fragment } from 'react';
 
 import { useScrollPosition } from '@/hooks';
@@ -23,7 +24,12 @@ function classNames(...classes: string[]) {
 }
 
 export default function NavBar() {
+  const router = useRouter();
   const scrollPosition = useScrollPosition();
+
+  const redirect = (path: string) => {
+    router.push(path);
+  };
 
   let image: any;
   if (scrollPosition > 0) {
@@ -31,7 +37,7 @@ export default function NavBar() {
       <img
         className="h-6"
         src="/assets/images/bounce_logo_white.png"
-        alt="Bounce Sports"
+        alt="Bounce Sports logo"
       />
     );
   } else {
@@ -39,7 +45,7 @@ export default function NavBar() {
       <img
         className="h-10"
         src="/assets/images/bounce-logo.png"
-        alt="Bounce Sports"
+        alt="Bounce Sports logo"
       />
     );
   }
@@ -93,10 +99,16 @@ export default function NavBar() {
                               </span>
                             </span>
                           </Menu.Button> */}
-                          <button className="mr-2 rounded-3xl border-2 border-bounce-200 bg-bounce-100 px-5 py-2.5 font-medium text-bounce-200 hover:border-2 hover:bg-bounce-200 hover:text-bounce-100">
+                          <button
+                            onClick={() => redirect('/auth')}
+                            className="mr-2 rounded-3xl border-2 border-bounce-200 bg-bounce-100 px-5 py-2.5 font-medium text-bounce-200 hover:border-2 hover:bg-bounce-200 hover:text-bounce-100"
+                          >
                             S&apos;inscrire
                           </button>
-                          <button className="ml-2 rounded-3xl border-2 bg-bounce-200 px-5 py-2.5 font-medium text-bounce-100 hover:bg-bounce-100 hover:text-bounce-200">
+                          <button
+                            onClick={() => redirect('/auth')}
+                            className="ml-2 rounded-3xl border-2 bg-bounce-200 px-5 py-2.5 font-medium text-bounce-100 hover:bg-bounce-100 hover:text-bounce-200"
+                          >
                             Se connecter
                           </button>
 

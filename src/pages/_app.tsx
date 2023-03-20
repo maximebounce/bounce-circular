@@ -1,9 +1,21 @@
 import '../styles/global.css';
 
 import type { AppProps } from 'next/app';
+import SuperTokensReact, { SuperTokensWrapper } from 'supertokens-auth-react';
 
-const MyApp = ({ Component, pageProps }: AppProps) => (
-  <Component {...pageProps} />
-);
+import { frontendConfig } from '../config/frontendConfig';
+
+if (typeof window !== 'undefined') {
+  // we only want to call this init function on the frontend, so we check typeof window !== 'undefined'
+  SuperTokensReact.init(frontendConfig());
+}
+
+const MyApp = ({ Component, pageProps }: AppProps) => {
+  return (
+    <SuperTokensWrapper>
+      <Component {...pageProps} />
+    </SuperTokensWrapper>
+  );
+};
 
 export default MyApp;

@@ -20,6 +20,25 @@ export const fetcherClub = (url: string, clubId: string) => {
   }).then((res) => res.json());
 };
 
+export const getUserWithMetaData = async () => {
+  const BASE_API = window.location.origin;
+  const urlApi =
+    process.env.NEXT_PUBLIC_ENV === 'DEV'
+      ? 'http://localhost:3000/api/user/'
+      : `${BASE_API}/api/user/`;
+  const headers = new Headers();
+  headers.set('method', 'GET');
+  headers.set('mode', 'GcorsET');
+  headers.set('credentials', 'include');
+  const options = {
+    method: 'GET',
+    headers,
+  };
+  const res = await fetch(urlApi, options);
+  const data = await res.json();
+  return data;
+};
+
 export const useClub = (clubId: string) => {
   const urlApi =
     process.env.NEXT_PUBLIC_ENV === 'DEV'
@@ -40,7 +59,7 @@ export const useClub = (clubId: string) => {
 export const getClubFromNotion = async (clubId: string) => {
   const urlApi =
     process.env.NEXT_PUBLIC_ENV === 'DEV'
-      ? 'https://bouncesports.app.n8n.cloud/webhook-test/877ad989-7f7c-49bb-b8b7-500f3ea578f0'
+      ? 'https://bouncesports.app.n8n.cloud/webhook/877ad989-7f7c-49bb-b8b7-500f3ea578f0' // 'https://bouncesports.app.n8n.cloud/webhook-test/877ad989-7f7c-49bb-b8b7-500f3ea578f0'
       : 'https://bouncesports.app.n8n.cloud/webhook/877ad989-7f7c-49bb-b8b7-500f3ea578f0';
   const headers = new Headers();
   headers.set(
@@ -96,7 +115,7 @@ export const postAuthOnN8N = async (emailString: string) => {
 export const postCollect = async (data: any) => {
   const urlApi =
     process.env.NEXT_PUBLIC_ENV === 'DEV'
-      ? '/api/collectRequest/n8n/test'
+      ? '/api/collectRequest/n8n' // '/api/collectRequest/n8n/test'
       : '/api/collectRequest/n8n';
   const headers = new Headers();
   headers.set(

@@ -4,9 +4,16 @@ import moment from 'moment';
 import React, { Fragment, useState } from 'react';
 import Datepicker from 'tailwind-datepicker-react'; // https://github.com/OMikkel/tailwind-datepicker-react;
 
+import type { INewCollect } from '@/interfaces/collect';
 import { postCollect } from '@/utils/api';
 
-export default function NewCollect({ clubName }: { clubName: string }) {
+export default function NewCollect({
+  clubName,
+  clubId,
+}: {
+  clubName: string;
+  clubId: string;
+}) {
   const collectOptions: { value: string; label: string }[] = [
     { value: '1 Box', label: '1 Box en carton' },
     { value: '2 Box', label: '2 Box en carton' },
@@ -26,16 +33,34 @@ export default function NewCollect({ clubName }: { clubName: string }) {
     }
     return date;
   }
+  function setTextButton(value: string) {
+    if (value === 'NOT_SEND') {
+      return 'Enregistrer';
+    }
+    if (value === 'IN_PROGRESS') {
+      return 'En cours ...';
+    }
+    if (value === 'SUCCESS') {
+      return 'Collecte enregistrée ✔️';
+    }
+    if (value === 'FAILURE') {
+      return "Erreur lors de l'enregistrement de la collecte";
+    }
+    return 'Enregistrer';
+  }
+
   const minDate = addWorkdays(new Date(), 2);
   const defaultDate = addWorkdays(new Date(), 2);
   const maxDate = addWorkdays(new Date(), 10);
 
-  const [box, setBox] = useState<string | undefined>(
-    collectOptions[0] ? collectOptions[0].value : undefined
+  const [box, setBox] = useState<string>(
+    collectOptions[0] ? collectOptions[0].value : '1 Box'
   );
   const [description, setText] = useState<string>('');
   const [date, setDate] = useState<Date | undefined>(defaultDate);
   const [show, setShow] = useState<boolean>(false);
+  const [collectRequestStatus, setCollectRequestStatus] =
+    useState<string>('NOT_SEND');
   const handleClose = (state: boolean) => {
     setShow(state);
   };
@@ -66,13 +91,24 @@ export default function NewCollect({ clubName }: { clubName: string }) {
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
-    const collectRequest = {
-      date: moment(date).format('DD/MM/yyyy'),
+    const collectRequest: INewCollect = {
+      clubId,
+      dateCollect: moment(date).format('yyyy-MM-DD'),
       clubName,
-      box,
+      numberOfBox: box,
       description,
     };
-    await postCollect(collectRequest);
+    try {
+      setCollectRequestStatus('IN_PROGRESS');
+      const newCollect: any = await postCollect(collectRequest);
+      if (newCollect && newCollect[0] && newCollect[0].clubId) {
+        setCollectRequestStatus('SUCCESS');
+      } else {
+        setCollectRequestStatus('FAILURE');
+      }
+    } catch (e: any) {
+      setCollectRequestStatus('FAILURE');
+    }
   };
 
   return (
@@ -207,9 +243,13 @@ export default function NewCollect({ clubName }: { clubName: string }) {
               <div className="mt-10">
                 <button
                   type="submit"
+                  disabled={
+                    collectRequestStatus === 'SUCCESS' ||
+                    collectRequestStatus === 'IN_PROGRESS'
+                  }
                   className="block w-full rounded-md bg-bounce-300 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
                 >
-                  Enregistrer
+                  {setTextButton(collectRequestStatus)}
                 </button>
               </div>
             </form>

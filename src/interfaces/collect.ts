@@ -6,3 +6,11 @@ export type ICollect = {
   dateCollect?: string;
   numberOfBox?: string;
 };
+
+export type INewCollect = {
+  clubId: string;
+  clubName: string;
+  numberOfBox: string;
+  dateCollect: string;
+  description?: string;
+};

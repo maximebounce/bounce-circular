@@ -1,6 +1,6 @@
+import SignIn from '@/layouts/components/old/SignIn';
 import Foot from '@/layouts/Foot';
 import { Meta } from '@/layouts/Meta';
-import SignIn from '@/layouts/SignIn';
 import { Main } from '@/templates/Main';
 
 export default function Login() {

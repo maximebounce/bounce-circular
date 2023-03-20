@@ -15,6 +15,7 @@ import { orderBy } from 'lodash';
 import moment from 'moment';
 import Link from 'next/link';
 import { Fragment, useState } from 'react';
+import { signOut } from 'supertokens-auth-react/recipe/emailpassword';
 
 import type { IClub } from '@/interfaces/club';
 import type { ICollect } from '@/interfaces/collect';
@@ -32,6 +33,12 @@ export default function Dashboard({ club }: { club: IClub }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [currentTab, setCurrentTab] = useState('Dashboard');
 
+  async function logoutClicked() {
+    await signOut();
+    window.location.href = '/';
+    // redirectToAuth();
+  }
+
   const navigation = [
     { name: 'Dashboard', icon: HomeIcon },
     {
@@ -43,6 +50,11 @@ export default function Dashboard({ club }: { club: IClub }) {
   const secondaryNavigation = [
     { name: 'Profile', icon: UserCircleIcon },
     { name: 'FAQ', icon: QuestionMarkCircleIcon },
+  ];
+
+  const menuItems = [
+    { name: 'Profile' },
+    // { name: 'Settings' }
   ];
 
   function getBackgroundColor(status: string | undefined) {
@@ -224,7 +236,7 @@ export default function Dashboard({ club }: { club: IClub }) {
               </Link>
             </div>
             <nav
-              className="mt-6 flex flex-1 flex-col divide-y divide-white overflow-y-auto"
+              className="mt-12 flex flex-1 flex-col divide-y divide-white overflow-y-auto"
               aria-label="Sidebar"
             >
               <div className="space-y-1 px-2">
@@ -349,36 +361,27 @@ export default function Dashboard({ club }: { club: IClub }) {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      {menuItems.map((menuItem, key) => {
+                        return (
+                          <Menu.Item key={key}>
+                            {({ active }) => (
+                              <a
+                                onClick={() => setCurrentTab(menuItem.name)}
+                                className={classNames(
+                                  active ? 'bg-gray-100' : '',
+                                  'block px-4 py-2 text-sm text-gray-700'
+                                )}
+                              >
+                                {menuItem.name}
+                              </a>
+                            )}
+                          </Menu.Item>
+                        );
+                      })}
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            onClick={() => setCurrentTab('Profile')}
-                            className={classNames(
-                              active ? 'bg-gray-100' : '',
-                              'block px-4 py-2 text-sm text-gray-700'
-                            )}
-                          >
-                            Profile
-                          </a>
-                        )}
-                      </Menu.Item>
-                      {/* <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active ? 'bg-gray-100' : '',
-                              'block px-4 py-2 text-sm text-gray-700'
-                            )}
-                          >
-                            Settings
-                          </a>
-                        )}
-                      </Menu.Item> */}
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
+                            onClick={() => logoutClicked()}
                             className={classNames(
                               active ? 'bg-gray-100' : '',
                               'block px-4 py-2 text-sm text-gray-700'
@@ -725,7 +728,10 @@ export default function Dashboard({ club }: { club: IClub }) {
           {currentTab === 'FAQ' && <FaqComponent></FaqComponent>}
           {currentTab === 'Factures' && <Invoices></Invoices>}
           {currentTab === 'newCollect' && (
-            <NewCollect clubName={club.clubName}></NewCollect>
+            <NewCollect
+              clubName={club.clubName}
+              clubId={club.clubId}
+            ></NewCollect>
           )}
         </div>
       </div>
