@@ -1,14 +1,13 @@
+export const websiteDomain =
+  process.env.APP_URL ||
+  process.env.NEXT_PUBLIC_APP_URL ||
+  `http://localhost:3000`;
+
 export const appInfo = {
   // learn more about this on https://supertokens.com/docs/thirdpartyemailpassword/appinfo
   appName: 'boilerplate-circular-nextjs',
-  apiDomain:
-    process.env.NEXT_PUBLIC_ENV === 'PRODUCTION'
-      ? window.location.origin
-      : 'http://localhost:3000',
-  websiteDomain:
-    process.env.NEXT_PUBLIC_ENV === 'PRODUCTION'
-      ? window.location.origin
-      : 'http://localhost:3000',
+  apiDomain: websiteDomain,
+  websiteDomain,
   apiBasePath: '/api/auth',
   websiteBasePath: '/auth',
 };

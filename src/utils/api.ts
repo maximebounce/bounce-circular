@@ -1,5 +1,6 @@
 import useSWR from 'swr';
 
+import { websiteDomain } from '@/config/appInfo';
 import type { IClub } from '@/interfaces/club';
 
 export const fetcherClub = (url: string, clubId: string) => {
@@ -21,11 +22,7 @@ export const fetcherClub = (url: string, clubId: string) => {
 };
 
 export const getUserWithMetaData = async () => {
-  const BASE_API = window.location.origin;
-  const urlApi =
-    process.env.NEXT_PUBLIC_ENV === 'DEV'
-      ? 'http://localhost:3000/api/user/'
-      : `${BASE_API}/api/user/`;
+  const urlApi = `${websiteDomain}/api/user/`;
   const headers = new Headers();
   headers.set('method', 'GET');
   headers.set('mode', 'GcorsET');
