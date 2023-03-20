@@ -20,13 +20,12 @@ export default function Auth() {
 
   return (
     <Main
-      meta={<Meta title="Login" description="Connexion à votre espace club" />}
+      meta={<Meta title="Bounce" description="Connexion à votre espace club" />}
     >
       <div className="mx-auto flex h-screen flex-col justify-between bg-bounce-100">
         <SimpleNavBar></SimpleNavBar>
         <SuperTokensComponentNoSSR />
         <div></div>
-        {/* <Foot></Foot> */}
       </div>
     </Main>
   );
