@@ -28,7 +28,7 @@ export default function Landing() {
             </p>
             <div className="space-y-4 pt-10 sm:flex sm:space-y-0 sm:space-x-4">
               <Link
-                href="/login"
+                href="/auth"
                 className="inline-flex w-full items-center justify-center rounded-3xl border-2 bg-bounce-300 px-5 py-2.5 text-center  font-medium text-white sm:w-auto"
               >
                 Se connecter

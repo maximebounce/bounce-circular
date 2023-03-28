@@ -30,9 +30,13 @@
     "next": "^13.2.4",
     "next-seo": "^5.15.0",
     "next-sitemap": "^4.0.5",
+    "nextjs-cors": "^2.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-tailwindcss-datepicker": "^1.5.1",
+    "supertokens-auth-react": "^0.31.2",
+    "supertokens-node": "^13.1.5",
+    "supertokens-web-js": "^0.5.0",
     "swr": "^2.1.0",
     "tailwind-datepicker-react": "^1.2.3"
   },

@@ -15,6 +15,7 @@ import { orderBy } from 'lodash';
 import moment from 'moment';
 import Link from 'next/link';
 import { Fragment, useState } from 'react';
+import { signOut } from 'supertokens-auth-react/recipe/emailpassword';
 
 import type { IClub } from '@/interfaces/club';
 import type { ICollect } from '@/interfaces/collect';
@@ -32,6 +33,12 @@ export default function Dashboard({ club }: { club: IClub }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [currentTab, setCurrentTab] = useState('Dashboard');
 
+  async function logoutClicked() {
+    await signOut();
+    window.location.href = '/';
+    // redirectToAuth();
+  }
+
   const navigation = [
     { name: 'Dashboard', icon: HomeIcon },
     {
@@ -43,6 +50,11 @@ export default function Dashboard({ club }: { club: IClub }) {
   const secondaryNavigation = [
     { name: 'Profile', icon: UserCircleIcon },
     { name: 'FAQ', icon: QuestionMarkCircleIcon },
+  ];
+
+  const menuItems = [
+    { name: 'Profile' },
+    // { name: 'Settings' }
   ];
 
   function getBackgroundColor(status: string | undefined) {
@@ -224,7 +236,7 @@ export default function Dashboard({ club }: { club: IClub }) {
               </Link>
             </div>
             <nav
-              className="mt-6 flex flex-1 flex-col divide-y divide-white overflow-y-auto"
+              className="mt-12 flex flex-1 flex-col divide-y divide-white overflow-y-auto"
               aria-label="Sidebar"
             >
               <div className="space-y-1 px-2">
@@ -349,36 +361,27 @@ export default function Dashboard({ club }: { club: IClub }) {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      {menuItems.map((menuItem, key) => {
+                        return (
+                          <Menu.Item key={key}>
+                            {({ active }) => (
+                              <a
+                                onClick={() => setCurrentTab(menuItem.name)}
+                                className={classNames(
+                                  active ? 'bg-gray-100' : '',
+                                  'block px-4 py-2 text-sm text-gray-700'
+                                )}
+                              >
+                                {menuItem.name}
+                              </a>
+                            )}
+                          </Menu.Item>
+                        );
+                      })}
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            onClick={() => setCurrentTab('Profile')}
-                            className={classNames(
-                              active ? 'bg-gray-100' : '',
-                              'block px-4 py-2 text-sm text-gray-700'
-                            )}
-                          >
-                            Profile
-                          </a>
-                        )}
-                      </Menu.Item>
-                      {/* <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active ? 'bg-gray-100' : '',
-                              'block px-4 py-2 text-sm text-gray-700'
-                            )}
-                          >
-                            Settings
-                          </a>
-                        )}
-                      </Menu.Item> */}
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
+                            onClick={() => logoutClicked()}
                             className={classNames(
                               active ? 'bg-gray-100' : '',
                               'block px-4 py-2 text-sm text-gray-700'
@@ -526,68 +529,43 @@ export default function Dashboard({ club }: { club: IClub }) {
                 <div className="shadow sm:hidden">
                   <ul
                     role="list"
-                    className="mt-2 divide-y divide-gray-200 overflow-hidden shadow sm:hidden"
+                    className="mt-2 divide-y divide-gray-200 overflow-hidden pl-3 shadow sm:hidden"
                   >
                     {collectsClub.map((collect) => (
                       <li key={collect.id}>
-                        {/* <a
-                          href={collect.href}
-                          className="block bg-white p-4 hover:bg-gray-50"
-                        >
-                          <span className="flex items-center space-x-4">
-                            <span className="flex flex-1 space-x-2 truncate">
-                              <CalendarDaysIcon
-                                className="h-5 w-5 shrink-0 text-gray-400"
-                                aria-hidden="true"
-                              />
-                              <span className="flex flex-col truncate text-sm text-gray-500">
-                                <span className="truncate">{collect.name}</span>
-                                <span>
-                                  <span className="font-medium text-gray-900">
-                                    {collect.amount}
-                                  </span>{' '}
-                                  {collect.currency}
-                                </span>
-                                <time dateTime={collect.datetime}>
-                                  {collect.date}
-                                </time>
-                              </span>
-                            </span>
-                            <ChevronRightIcon
-                              className="h-5 w-5 shrink-0 text-gray-400"
-                              aria-hidden="true"
-                            />
-                          </span>
-                        </a> */}
-                        <span className="flex flex-1 space-x-2 truncate">
+                        <span className="flex flex-1 space-x-2 truncate py-3">
                           <CalendarDaysIcon
                             className="h-5 w-5 shrink-0 text-gray-400"
                             aria-hidden="true"
                           />
-                          <span className="flex flex-col truncate text-sm text-gray-500">
-                            <time dateTime={collect.dateRequest}>
-                              {collect.dateRequest}
+                          <span className="flex flex-col truncate text-sm text-gray-700">
+                            <time
+                              className="pb-1"
+                              dateTime={collect.dateRequest}
+                            >
+                              Demande: {collect.dateRequest}
                             </time>
-                            <span>
+
+                            <span className="pb-1">
                               <time dateTime={collect.dateCollect}>
+                                Collecte: {collect.numberOfBox} le{' '}
                                 {collect.dateCollect}
                               </time>
                             </span>
-                            <span
-                              className={getBackgroundColor(collect.status)}
-                            >
-                              {collect.status}
-                            </span>
-                            <span className="truncate">
-                              {collect.numberOfBox}
-                            </span>
+
+                            <div>
+                              <span
+                                className={getBackgroundColor(collect.status)}
+                              >
+                                {collect.status}
+                              </span>
+                            </div>
                           </span>
                         </span>
                       </li>
                     ))}
                   </ul>
-
-                  <nav
+                  {/* <nav
                     className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3"
                     aria-label="Pagination"
                   >
@@ -605,14 +583,14 @@ export default function Dashboard({ club }: { club: IClub }) {
                         Suivant
                       </a>
                     </div>
-                  </nav>
+                  </nav> */}
                 </div>
 
                 {/* Activity table (small breakpoint and up) */}
                 <div className="hidden sm:block">
                   <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
                     <div className="mt-2 flex flex-col">
-                      <div className="min-w-full overflow-hidden overflow-x-auto align-middle shadow sm:rounded-lg">
+                      <div className=" overflow-hidden overflow-x-auto align-middle shadow sm:rounded-lg">
                         <table className="min-w-full divide-y divide-gray-200">
                           <thead>
                             <tr>
@@ -623,7 +601,7 @@ export default function Dashboard({ club }: { club: IClub }) {
                                 Date de la demande
                               </th>
                               <th
-                                className="bg-gray-50 px-6 py-3 text-right text-sm font-semibold text-gray-900"
+                                className="bg-gray-50 px-6 py-3 text-left text-sm font-semibold text-gray-900"
                                 scope="col"
                               >
                                 Date de la collecte
@@ -635,7 +613,7 @@ export default function Dashboard({ club }: { club: IClub }) {
                                 Statut
                               </th>
                               <th
-                                className="bg-gray-50 px-6 py-3 text-right text-sm font-semibold text-gray-900"
+                                className="bg-gray-50 px-6 py-3 text-left text-sm font-semibold text-gray-900"
                                 scope="col"
                               >
                                 Nombre de carton
@@ -645,31 +623,17 @@ export default function Dashboard({ club }: { club: IClub }) {
                           <tbody className="divide-y divide-gray-200 bg-white">
                             {collectsClub.map((collect) => (
                               <tr key={collect.id} className="bg-white">
-                                <td className="w-full max-w-0 whitespace-nowrap px-6 text-sm text-gray-900">
-                                  <div className="flex">
-                                    {/* <a
-                                    href="/"
-                                    className="group inline-flex space-x-2 truncate text-sm"
-                                  >
-                                    
-                                  </a> */}
-                                    {/* <BanknotesIcon
-                                    className="h-5 w-5 shrink-0 text-gray-400 group-hover:text-gray-500"
-                                    aria-hidden="true"
-                                  /> */}
-                                    <p className="truncate text-gray-500 group-hover:text-gray-900">
-                                      {collect.dateRequest}
-                                    </p>
-                                  </div>
+                                <td className="max-w-0 whitespace-nowrap px-6 text-sm text-gray-900">
+                                  <p className="truncate text-left text-gray-500 group-hover:text-gray-900">
+                                    {collect.dateRequest}
+                                  </p>
                                 </td>
-                                <td className="whitespace-nowrap px-6 text-right text-sm text-gray-500">
+                                <td className="whitespace-nowrap px-6 text-left text-sm text-gray-500">
                                   <time dateTime={collect.dateCollect}>
                                     {collect.dateCollect}
                                   </time>
-
-                                  {/* {collect.currency} */}
                                 </td>
-                                <td className="whitespace-nowrap px-6 text-sm text-gray-500">
+                                <td className="whitespace-nowrap px-6 text-left text-sm text-gray-500">
                                   <span
                                     className={getBackgroundColor(
                                       collect.status
@@ -678,7 +642,7 @@ export default function Dashboard({ club }: { club: IClub }) {
                                     {collect.status}
                                   </span>
                                 </td>
-                                <td className="whitespace-nowrap px-6 text-right text-sm text-gray-500">
+                                <td className="whitespace-nowrap px-6 text-left text-sm text-gray-500">
                                   <span className="font-medium text-gray-900">
                                     {collect.numberOfBox}
                                   </span>
@@ -725,7 +689,10 @@ export default function Dashboard({ club }: { club: IClub }) {
           {currentTab === 'FAQ' && <FaqComponent></FaqComponent>}
           {currentTab === 'Factures' && <Invoices></Invoices>}
           {currentTab === 'newCollect' && (
-            <NewCollect clubName={club.clubName}></NewCollect>
+            <NewCollect
+              clubName={club.clubName}
+              clubId={club.clubId}
+            ></NewCollect>
           )}
         </div>
       </div>

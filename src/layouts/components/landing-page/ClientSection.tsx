@@ -19,7 +19,7 @@ export default function ClientSection() {
         De nombreux clubs nous font confiance
       </p> */}
       <div className="mx-auto max-w-screen-xl py-8 lg:pb-16">
-        <div className="grid grid-cols-2 gap-8 text-gray-500 dark:text-gray-400 sm:grid-cols-3 sm:gap-12 lg:grid-cols-7">
+        <div className="grid grid-cols-2 place-items-center gap-8 text-gray-500 dark:text-gray-400 sm:grid-cols-3 sm:gap-12 lg:grid-cols-7">
           {clubs.map((clubName, index) => (
             <div className="flex items-center lg:justify-center" key={index}>
               <Image
