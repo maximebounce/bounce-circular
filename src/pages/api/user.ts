@@ -6,7 +6,7 @@ import { verifySession } from 'supertokens-node/recipe/session/framework/express
 import UserMetadata from 'supertokens-node/recipe/usermetadata';
 
 import type { IClub } from '@/interfaces/club';
-import { getClubFromNotion } from '@/utils/api';
+import { getClubFromNotion } from '@/utils/api/club';
 
 import { backendConfig } from '../../config/backendConfig';
 

@@ -1,23 +1,24 @@
-import { Disclosure, Menu, Transition } from '@headlessui/react';
+import { Disclosure, Menu } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Fragment } from 'react';
 
 import { useScrollPosition } from '@/hooks';
 
-const user = {
-  name: 'Tom Cook',
-  email: 'tom@example.com',
-  imageUrl:
-    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-};
-const navigation = [{ name: 'Dashboard', href: '#', current: true }];
-const userNavigation = [
-  { name: 'Dashboard', href: '#' },
-  { name: 'Profile', href: '#' },
-  // { name: 'Sign out', href: '#' },
+// const user = {
+//   name: 'Tom Cook',
+//   email: 'tom@example.com',
+//   imageUrl:
+//     'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+// };
+const navigation = [
+  { name: 'Se connecter', href: '/auth', current: true },
+  { name: 'Demander un devis', href: '/auth', current: true },
 ];
+// const userNavigation = [
+//   { name: 'Dashboard', href: '#' },
+//   { name: 'Profile', href: '#' },
+// ];
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
@@ -47,6 +48,45 @@ export default function NavBar() {
         src="/assets/images/bounce-logo.png"
         alt="Bounce Sports logo"
       />
+    );
+  }
+
+  let buttons: any;
+  if (scrollPosition > 0) {
+    buttons = (
+      <div>
+        <button
+          onClick={() => redirect('/contact')}
+          className="mr-2 rounded-3xl border-2 border-bounce-200 bg-bounce-100 px-5 py-2.5 font-medium text-bounce-200 hover:border-2 hover:border-bounce-100 hover:bg-bounce-200 hover:text-bounce-100"
+        >
+          Demander un devis
+          {/* S&apos;inscrire */}
+        </button>
+        <button
+          onClick={() => redirect('/auth')}
+          className="ml-2 rounded-3xl border-2 bg-bounce-200 px-5 py-2.5 font-medium text-bounce-100 hover:bg-bounce-100 hover:text-bounce-200"
+        >
+          Se connecter
+        </button>
+      </div>
+    );
+  } else {
+    buttons = (
+      <div>
+        <button
+          onClick={() => redirect('/contact')}
+          className="mr-2 rounded-3xl border-2 border-bounce-200 bg-bounce-100 px-5 py-2.5 font-medium text-bounce-200 hover:border-2  hover:bg-bounce-200 hover:text-bounce-100"
+        >
+          Demander un devis
+          {/* S&apos;inscrire */}
+        </button>
+        <button
+          onClick={() => redirect('/auth')}
+          className="ml-2 rounded-3xl border-2 bg-bounce-200 px-5 py-2.5 font-medium text-bounce-100 hover:border-bounce-200 hover:bg-bounce-100 hover:text-bounce-200"
+        >
+          Se connecter
+        </button>
+      </div>
     );
   }
 
@@ -91,30 +131,15 @@ export default function NavBar() {
                     <div className="ml-4 flex items-center md:ml-6">
                       {/* Profile dropdown */}
                       <Menu as="div" className="relative ml-3">
-                        <div>
-                          {/* <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                        {/* <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                             <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gray-500">
                               <span className="text-lg font-medium leading-none text-white">
                                 TW
                               </span>
                             </span>
                           </Menu.Button> */}
-                          <button
-                            onClick={() => redirect('/auth')}
-                            className="mr-2 rounded-3xl border-2 border-bounce-200 bg-bounce-100 px-5 py-2.5 font-medium text-bounce-200 hover:border-2 hover:bg-bounce-200 hover:text-bounce-100"
-                          >
-                            S&apos;inscrire
-                          </button>
-                          <button
-                            onClick={() => redirect('/auth')}
-                            className="ml-2 rounded-3xl border-2 bg-bounce-200 px-5 py-2.5 font-medium text-bounce-100 hover:bg-bounce-100 hover:text-bounce-200"
-                          >
-                            Se connecter
-                          </button>
-
-                          {/* href="/login" */}
-                        </div>
-                        <Transition
+                        {buttons}
+                        {/* <Transition
                           as={Fragment}
                           enter="transition ease-out duration-100"
                           enterFrom="transform opacity-0 scale-95"
@@ -140,7 +165,7 @@ export default function NavBar() {
                               </Menu.Item>
                             ))}
                           </Menu.Items>
-                        </Transition>
+                        </Transition> */}
                       </Menu>
                     </div>
                   </div>
@@ -166,6 +191,7 @@ export default function NavBar() {
 
               <Disclosure.Panel className="md:hidden">
                 <div className=" space-y-1 px-2 pt-2 pb-3 sm:px-3">
+                  {/* {buttons} */}
                   {navigation.map((item) => (
                     <Disclosure.Button
                       key={item.name}
@@ -183,7 +209,7 @@ export default function NavBar() {
                     </Disclosure.Button>
                   ))}
                 </div>
-                <div className="border-t border-gray-700 pt-4 pb-3">
+                {/* <div className="border-t border-gray-700 pt-4 pb-3">
                   <div className="flex items-center px-5">
                     <div className="shrink-0">
                       <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-gray-500">
@@ -200,13 +226,13 @@ export default function NavBar() {
                         {user.email}
                       </div>
                     </div>
-                    {/* <button
+                    <button
                       type="button"
                       className="ml-auto shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                     >
                       <span className="sr-only">View notifications</span>
                       <BellIcon className="h-6 w-6" aria-hidden="true" />
-                    </button> */}
+                    </button>
                   </div>
                   <div className="mt-3 space-y-1 px-2">
                     {userNavigation.map((item) => (
@@ -220,7 +246,7 @@ export default function NavBar() {
                       </Disclosure.Button>
                     ))}
                   </div>
-                </div>
+                </div> */}
               </Disclosure.Panel>
             </>
           )}

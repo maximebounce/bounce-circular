@@ -9,7 +9,7 @@ import Dashboard from '@/layouts/Dashboard';
 import Loader from '@/layouts/Loader';
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
-import { getUserWithMetaData } from '@/utils/api';
+import { getUserWithMetaData } from '@/utils/api/user';
 
 import NotFound from '../notFound';
 

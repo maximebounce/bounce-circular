@@ -102,6 +102,10 @@ export const frontendConfig = () => {
                 [data-supertokens~="superTokensBranding"] {
                   background-color: #F9F5F3;
                 }
+
+                [data-supertokens~=headerSubtitle] {
+                  display: none;
+                }
             `,
           },
         },

@@ -5,7 +5,7 @@ import React, { Fragment, useState } from 'react';
 import Datepicker from 'tailwind-datepicker-react'; // https://github.com/OMikkel/tailwind-datepicker-react;
 
 import type { INewCollect } from '@/interfaces/collect';
-import { postCollect } from '@/utils/api';
+import { postCollect } from '@/utils/api/collect';
 
 export default function NewCollect({
   clubName,

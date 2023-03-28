@@ -10,9 +10,15 @@ import { backendConfig } from '../../../../config/backendConfig';
 
 supertokens.init(backendConfig());
 
+/**
+ * updateUserMetadata
+ * @param req
+ * @param res
+ */
 export default async function handler(req: any, res: any) {
   const { method } = req;
   const { session } = req as SessionRequest;
+  const { clubId } = req.body;
 
   switch (method) {
     case 'PUT':
@@ -31,11 +37,12 @@ export default async function handler(req: any, res: any) {
         req,
         res
       );
+
       try {
         if (session) {
           const userId = session.getUserId();
           await UserMetadata.updateUserMetadata(userId, {
-            clubId: '87b5a0d5-5306-4b1b-9b55-dbbd649d16ca',
+            clubId,
           });
           res.json({ message: 'successfully updated user metadata' });
         }
