@@ -166,6 +166,8 @@ export const defaultTranslationsEmailPassword = {
     BRANDING_POWERED_BY_END: '',
     MY_CUSTOM_LABEL: 'Circular',
 
+    SOMETHING_WENT_WRONG_ERROR: 'Une erreur est survenue',
+
     /*
      * The following are error messages from our backend SDK.
      * These are returned as full messages to preserver compatibilty, but they work just like the keys above.

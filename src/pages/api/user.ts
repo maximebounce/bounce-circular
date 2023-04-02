@@ -8,6 +8,7 @@ import UserMetadata from 'supertokens-node/recipe/usermetadata';
 import type { IClub } from '@/interfaces/club';
 import { getClubFromNotion } from '@/utils/api/club';
 
+import { appInfo } from '../../config/appInfo';
 import { backendConfig } from '../../config/backendConfig';
 
 supertokens.init(backendConfig());
@@ -16,7 +17,7 @@ export default async function user(req: any, res: any) {
   // NOTE: We need CORS only if we are querying the APIs from a different origin
   await NextCors(req, res, {
     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-    origin: 'http://localhost:3000',
+    origin: appInfo.websiteDomain,
     credentials: true,
     allowedHeaders: ['content-type', ...supertokens.getAllCORSHeaders()],
   });

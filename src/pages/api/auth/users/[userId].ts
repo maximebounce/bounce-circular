@@ -6,6 +6,7 @@ import { superTokensNextWrapper } from 'supertokens-node/nextjs';
 import { verifySession } from 'supertokens-node/recipe/session/framework/express';
 import UserMetadata from 'supertokens-node/recipe/usermetadata';
 
+import { appInfo } from '../../../../config/appInfo';
 import { backendConfig } from '../../../../config/backendConfig';
 
 supertokens.init(backendConfig());
@@ -24,7 +25,7 @@ export default async function handler(req: any, res: any) {
     case 'PUT':
       await NextCors(req, res, {
         methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-        origin: 'http://localhost:3000',
+        origin: appInfo.websiteDomain,
         credentials: true,
         allowedHeaders: ['content-type', ...supertokens.getAllCORSHeaders()],
       });
