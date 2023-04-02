@@ -1,7 +1,10 @@
+import _ from 'lodash';
 import Image from 'next/image';
 
+import { useIsMobile } from '@/hooks';
+
 export default function ClientSection() {
-  const clubs = [
+  let clubs = [
     // 'Bastogne',
     'Genval',
     // 'Geronsart',
@@ -13,6 +16,10 @@ export default function ClientSection() {
     // 'Waremme',
     'Wellington',
   ];
+
+  if (useIsMobile()) {
+    clubs = _.filter(clubs, (club) => club !== 'Wellington');
+  }
   return (
     <div>
       {/* <p className="mx-auto max-w-screen-xl pb-4 text-lg lg:pb-8">

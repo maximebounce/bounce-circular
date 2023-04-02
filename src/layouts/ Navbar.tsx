@@ -13,7 +13,7 @@ import { useScrollPosition } from '@/hooks';
 // };
 const navigation = [
   { name: 'Se connecter', href: '/auth', current: true },
-  { name: 'Demander un devis', href: '/auth', current: true },
+  { name: 'Nous contacter', href: '/contact', current: true },
 ];
 // const userNavigation = [
 //   { name: 'Dashboard', href: '#' },
@@ -59,7 +59,7 @@ export default function NavBar() {
           onClick={() => redirect('/contact')}
           className="mr-2 rounded-3xl border-2 border-bounce-200 bg-bounce-100 px-5 py-2.5 font-medium text-bounce-200 hover:border-2 hover:border-bounce-100 hover:bg-bounce-200 hover:text-bounce-100"
         >
-          Demander un devis
+          Nous contacter
           {/* S&apos;inscrire */}
         </button>
         <button
@@ -77,7 +77,7 @@ export default function NavBar() {
           onClick={() => redirect('/contact')}
           className="mr-2 rounded-3xl border-2 border-bounce-200 bg-bounce-100 px-5 py-2.5 font-medium text-bounce-200 hover:border-2  hover:bg-bounce-200 hover:text-bounce-100"
         >
-          Demander un devis
+          Nous contacter
           {/* S&apos;inscrire */}
         </button>
         <button
