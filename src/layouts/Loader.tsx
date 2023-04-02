@@ -1,8 +1,10 @@
 export default function Loader() {
   return (
-    <div>
-      <section className="bg-bounce-100 text-white">
-        <div className="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center">
+    <div className="min-h-screen bg-bounce-100">
+      {/* <div className="flex items-center justify-center">
+        <div className="inline-block h-8 w-8" role="status"> */}
+      <section>
+        <div className="mx-auto flex h-screen max-w-screen-xl items-center px-4 py-32">
           <div className="mx-auto max-w-3xl text-center">
             <svg
               version="1.0"
@@ -34,6 +36,8 @@ m256 -549 c-3 -10 -8 -31 -12 -48 -10 -45 -51 -124 -95 -182 -61 -82 -198
             </svg>
           </div>
         </div>
+        {/* </div>
+        </div> */}
       </section>
 
       <span className="sr-only">Loading...</span>

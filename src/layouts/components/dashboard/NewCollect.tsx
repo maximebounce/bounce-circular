@@ -2,10 +2,14 @@ import { Listbox, Transition } from '@headlessui/react';
 import { ChevronUpDownIcon } from '@heroicons/react/20/solid';
 import moment from 'moment';
 import React, { Fragment, useState } from 'react';
-import Datepicker from 'tailwind-datepicker-react'; // https://github.com/OMikkel/tailwind-datepicker-react;
+// import Datepicker from 'tailwind-datepicker-react'; // https://github.com/OMikkel/tailwind-datepicker-react;
+import Datepicker from 'react-tailwindcss-datepicker'; // https://react-tailwindcss-datepicker.vercel.app/advanced-features#localization
+import type { DateValueType } from 'react-tailwindcss-datepicker/dist/types';
 
 import type { INewCollect } from '@/interfaces/collect';
 import { postCollect } from '@/utils/api/collect';
+
+import CollectSuccess from './CollectSuccess';
 
 export default function NewCollect({
   clubName,
@@ -52,37 +56,28 @@ export default function NewCollect({
   const minDate = addWorkdays(new Date(), 2);
   const defaultDate = addWorkdays(new Date(), 2);
   const maxDate = addWorkdays(new Date(), 10);
+  const [valueDate, setValue] = useState<DateValueType>({
+    startDate: defaultDate,
+    endDate: defaultDate,
+  });
 
   const [box, setBox] = useState<string>(
     collectOptions[0] ? collectOptions[0].value : '1 Box'
   );
   const [description, setText] = useState<string>('');
-  const [date, setDate] = useState<Date | undefined>(defaultDate);
-  const [show, setShow] = useState<boolean>(false);
+  // const [date, setDate] = useState<Date | undefined>(defaultDate);
+  // const [show, setShow] = useState<boolean>(false);
   const [collectRequestStatus, setCollectRequestStatus] =
     useState<string>('NOT_SEND');
-  const handleClose = (state: boolean) => {
-    setShow(state);
-  };
-  const handleValueChange = (selectedDate: Date) => {
-    setDate(selectedDate);
+  // const handleClose = (state: boolean) => {
+  //   setShow(state);
+  // };
+  const handleValueChange = (value: DateValueType) => {
+    console.log('value', value);
+    setValue(value);
   };
   const handleChangeText = (textInput: string) => {
     setText(textInput);
-  };
-
-  const options: any = {
-    todayBtn: false,
-    clearBtn: false,
-    maxDate,
-    minDate,
-    theme: {
-      background: 'bg-white',
-      selected: 'bg-bounce-300 hover:bg-bounce-300',
-      disabledText: 'bg-gray-300',
-    },
-    language: 'fr',
-    defaultDate,
   };
 
   function classNames(...classes: string[]) {
@@ -90,10 +85,14 @@ export default function NewCollect({
   }
 
   const handleSubmit = async (event: any) => {
+    if (!valueDate) {
+      alert('No date selected');
+      return;
+    }
     event.preventDefault();
     const collectRequest: INewCollect = {
       clubId,
-      dateCollect: moment(date).format('yyyy-MM-DD'),
+      dateCollect: moment(valueDate.startDate).format('yyyy-MM-DD'),
       clubName,
       numberOfBox: box,
       description,
@@ -110,6 +109,10 @@ export default function NewCollect({
       setCollectRequestStatus('FAILURE');
     }
   };
+
+  if (collectRequestStatus === 'SUCCESS') {
+    return <CollectSuccess></CollectSuccess>;
+  }
 
   return (
     <>
@@ -148,7 +151,7 @@ export default function NewCollect({
                     <Listbox value={box} onChange={setBox}>
                       {({ open }) => (
                         <div className="relative mt-2">
-                          <Listbox.Button className="relative w-full cursor-default rounded-md bg-gray-50 py-2 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6">
+                          <Listbox.Button className="relative w-full cursor-default rounded-md py-2 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6">
                             <span className="block truncate">{box}</span>
                             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                               <ChevronUpDownIcon
@@ -206,18 +209,23 @@ export default function NewCollect({
                     Date de la collecte
                   </label>
                   <div className="mt-2.5 bg-white">
-                    {/* <input
-                      type="text"
-                      name="last-name"
-                      id="last-name"
-                      autoComplete="family-name"
-                      className="block w-full rounded-md border-0 py-2 px-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    /> */}
                     <Datepicker
-                      options={options}
-                      show={show}
-                      setShow={handleClose}
+                      primaryColor={'red'}
+                      i18n={'fr'}
+                      inputClassName="ring-1 ring-gray-300 text-black focus:ring-0 shadow-none focus:shadow-none"
+                      useRange={false}
+                      asSingle={true}
+                      value={valueDate}
+                      displayFormat={'DD/MM/YYYY'}
                       onChange={handleValueChange}
+                      minDate={minDate}
+                      maxDate={maxDate}
+                      disabledDates={[
+                        {
+                          startDate: '2023-04-08',
+                          endDate: '2023-04-08',
+                        },
+                      ]}
                     />
                   </div>
                 </div>

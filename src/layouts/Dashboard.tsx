@@ -5,6 +5,7 @@ import {
   Bars3CenterLeftIcon,
   CalendarDaysIcon,
   DocumentChartBarIcon,
+  // EnvelopeIcon,
   HomeIcon,
   MapPinIcon,
   QuestionMarkCircleIcon,
@@ -23,6 +24,7 @@ import type { ICollect } from '@/interfaces/collect';
 import Invoices from './components/dashboard/Invoices';
 import NewCollect from './components/dashboard/NewCollect';
 import Profile from './components/dashboard/Profile';
+import Contact from './Contact';
 import FaqComponent from './Faq';
 
 function classNames(...classes: string[]) {
@@ -50,6 +52,7 @@ export default function Dashboard({ club }: { club: IClub }) {
   const secondaryNavigation = [
     { name: 'Profile', icon: UserCircleIcon },
     { name: 'FAQ', icon: QuestionMarkCircleIcon },
+    // { name: 'Contact', icon: EnvelopeIcon },
   ];
 
   const menuItems = [
@@ -78,8 +81,8 @@ export default function Dashboard({ club }: { club: IClub }) {
   const collectsClub: ICollect[] = collectsSorted.map((collect) => {
     return {
       ...collect,
-      dateRequest: moment(collect.dateRequest).utc().format('DD/MM/YYYY HH:mm'),
-      dateCollect: moment(collect.dateCollect).utc().format('DD/MM/YYYY'),
+      dateRequest: moment(collect.dateRequest).format('DD/MM/YYYY HH:mm'),
+      dateCollect: moment(collect.dateCollect).format('DD/MM/YYYY'),
     };
   });
 
@@ -88,10 +91,10 @@ export default function Dashboard({ club }: { club: IClub }) {
       name: 'Nombre de collectes effectués',
       href: '#',
       icon: ArchiveBoxIcon,
-      amount: club.numberCollects,
+      amount: club && club.collects ? club.collects.length : 0,
     },
     {
-      name: 'Nombre de collectes disponible',
+      name: 'Nombre de collectes encore disponible',
       href: '#',
       icon: ArchiveBoxIcon,
       amount: club.numberCollectsAvailable,
@@ -688,6 +691,7 @@ export default function Dashboard({ club }: { club: IClub }) {
           {currentTab === 'Profile' && <Profile club={club}></Profile>}
           {currentTab === 'FAQ' && <FaqComponent></FaqComponent>}
           {currentTab === 'Factures' && <Invoices></Invoices>}
+          {currentTab === 'Contact' && <Contact></Contact>}
           {currentTab === 'newCollect' && (
             <NewCollect
               clubName={club.clubName}

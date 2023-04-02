@@ -13,14 +13,21 @@ const faqs = [
     answer:
       "Non, une fois une collecte programmée, il n'est plus possible de changer celle-ci.",
   },
+  {
+    question: 'Concrètement que deviennent ces balles?',
+    answer:
+      "A l'heure actuelle, nous broyons les balles afin d'extraire le caoutchcouc des balles pour le réutiliser. Ce résidu broyer sert ensuite de matière première pour des sols de surfaces de jeux pour enfants ou de salles sportives.",
+    description:
+      "Bounce étudie également d'autres options afin de revaloriser aux mieux le caoutchouc et la feutrine. Plus d'informations sur ce sujet, prochainement.",
+  },
   // More questions...
 ];
 
 export default function FaqComponent() {
   return (
-    <div className="bg-gray-50">
-      <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:py-40 lg:px-8">
-        <div className="mx-auto max-w-4xl divide-y divide-gray-900/10">
+    <div>
+      <div className="mx-auto max-w-screen-xl px-6 py-20 sm:py-24 lg:py-28 lg:px-8">
+        <div className="mx-auto  divide-y divide-gray-900/10">
           <h2 className="text-2xl font-bold leading-10 tracking-tight text-gray-900">
             FAQ
           </h2>
@@ -53,6 +60,13 @@ export default function FaqComponent() {
                       <p className="text-base leading-7 text-gray-600">
                         {faq.answer}
                       </p>
+                      {faq.description ? (
+                        <p className="text-base leading-7 text-gray-600">
+                          {faq.description}
+                        </p>
+                      ) : (
+                        ''
+                      )}
                     </Disclosure.Panel>
                   </>
                 )}

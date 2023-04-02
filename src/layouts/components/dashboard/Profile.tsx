@@ -1,10 +1,8 @@
-import { PaperClipIcon } from '@heroicons/react/20/solid';
-
 import type { IClub } from '@/interfaces/club';
 
 export default function Profile({ club }: { club: IClub }) {
   return (
-    <div className="overflow-hidden bg-white p-6 shadow sm:rounded-lg">
+    <div className="overflow-hidden bg-white p-6 sm:rounded-lg">
       <div className="py-5 sm:px-6">
         <h3 className="text-base font-semibold leading-6 text-gray-900">
           Information du club
@@ -16,13 +14,13 @@ export default function Profile({ club }: { club: IClub }) {
       <div className="border-t border-gray-200 px-4 py-5 sm:p-0">
         <dl className="sm:divide-y sm:divide-gray-200">
           <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">Club</dt>
+            <dt className="text-sm font-medium text-bounceGray-200">Club</dt>
             <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
               {club?.title}
             </dd>
           </div>
           <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">
+            <dt className="text-sm font-medium text-bounceGray-200">
               Nom de la personne de contact
             </dt>
             <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
@@ -31,13 +29,15 @@ export default function Profile({ club }: { club: IClub }) {
           </div>
 
           <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">Adresse email</dt>
+            <dt className="text-sm font-medium text-bounceGray-200">
+              Adresse email
+            </dt>
             <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
               {club?.contact?.email}
             </dd>
           </div>
           <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">
+            <dt className="text-sm font-medium text-bounceGray-200">
               Adresse du club
             </dt>
             <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
@@ -45,15 +45,15 @@ export default function Profile({ club }: { club: IClub }) {
             </dd>
           </div>
           <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">
+            <dt className="text-sm font-medium text-bounceGray-200">
               Emplacement cartons pour le transporteur
             </dt>
             <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
               {club?.details}
             </dd>
           </div>
-          <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">Contrat</dt>
+          {/* <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
+            <dt className="text-sm font-medium text-bounceGray-200">Contrat</dt>
             <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
               <ul
                 role="list"
@@ -80,7 +80,7 @@ export default function Profile({ club }: { club: IClub }) {
                 </li>
               </ul>
             </dd>
-          </div>
+          </div> */}
         </dl>
       </div>
     </div>
