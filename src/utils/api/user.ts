@@ -15,6 +15,21 @@ export const getUserWithMetaData = async () => {
   return data;
 };
 
+export const getUserMetaDataOnly = async () => {
+  const urlApi = `${websiteDomain}/api/userMetaData/`;
+  const headers = new Headers();
+  headers.set('method', 'GET');
+  headers.set('mode', 'GcorsET');
+  headers.set('credentials', 'include');
+  const options = {
+    method: 'GET',
+    headers,
+  };
+  const res = await fetch(urlApi, options);
+  const data = await res.json();
+  return data;
+};
+
 // export const createUserAccount = async (clubId: string, email: string) => {
 //   const urlApi = `${websiteDomain}/api/invite/?clubId=${clubId}`;
 //   const headers = new Headers();

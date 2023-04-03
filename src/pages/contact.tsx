@@ -7,7 +7,7 @@ export default function ContactPage() {
   return (
     <>
       <Main meta={<Meta title="Contact" description="Contactez-nous" />}>
-        <div className="mx-auto flex h-screen flex-col justify-between bg-bounce-100">
+        <div className="mx-auto flex min-h-screen flex-col justify-between bg-bounce-100">
           <SimpleNavBar></SimpleNavBar>
           <Contact></Contact>
         </div>

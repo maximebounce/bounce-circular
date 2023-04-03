@@ -1,6 +1,7 @@
 import type { IClub } from '@/interfaces/club';
 
 export default function Profile({ club }: { club: IClub }) {
+  const member = club && club.members ? club.members[0] : null;
   return (
     <div className="overflow-hidden bg-white p-6 sm:rounded-lg">
       <div className="py-5 sm:px-6">
@@ -24,7 +25,7 @@ export default function Profile({ club }: { club: IClub }) {
               Nom de la personne de contact
             </dt>
             <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-              {club?.contact?.name}
+              {member?.name}
             </dd>
           </div>
 
@@ -33,7 +34,7 @@ export default function Profile({ club }: { club: IClub }) {
               Adresse email
             </dt>
             <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-              {club?.contact?.email}
+              {member?.email}
             </dd>
           </div>
           <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">

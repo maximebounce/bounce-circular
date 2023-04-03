@@ -124,7 +124,8 @@ export const defaultTranslationsEmailPassword = {
     EMAIL_PASSWORD_RESET_SEND_FALLBACK_EMAIL: 'Votre compte',
     EMAIL_PASSWORD_RESET_SEND_BEFORE_EMAIL:
       'Une demande de mise à jour de votre mot a été envoyé ',
-    EMAIL_PASSWORD_RESET_SEND_AFTER_EMAIL: ', if it exists in our system. ',
+    EMAIL_PASSWORD_RESET_SEND_AFTER_EMAIL:
+      ', si il existe dans notre système. ',
     EMAIL_PASSWORD_RESET_RESEND_LINK: "Renvoyer ou changer d'email",
     EMAIL_PASSWORD_RESET_SEND_BTN: "M'envoyer un email",
     EMAIL_PASSWORD_RESET_SIGN_IN_LINK: 'Se connecter',

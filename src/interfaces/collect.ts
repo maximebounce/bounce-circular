@@ -1,3 +1,5 @@
+import type { IMember } from './member';
+
 export type ICollect = {
   id: string;
   dateRequest: string;
@@ -13,4 +15,6 @@ export type INewCollect = {
   numberOfBox: string;
   dateCollect: string;
   description?: string;
+  urlRedirect?: string;
+  member?: IMember;
 };

@@ -11,7 +11,7 @@ export default function Invite() {
 
   return (
     <>
-      <div className="flex h-full flex-col justify-center py-2 pb-8 sm:px-6 lg:px-8">
+      <div className="flex flex-col justify-center py-2 pb-8 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           {/* <img
             className="mx-auto h-12 w-auto"
@@ -43,7 +43,7 @@ export default function Invite() {
                   htmlFor="email"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  Adresse Email
+                  Adresse Email *
                 </label>
                 <div className="mt-2">
                   <input
@@ -62,7 +62,7 @@ export default function Invite() {
                     htmlFor="firstName"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    Prénom
+                    Prénom *
                   </label>
                   <button
                     data-te-toggle="tooltip"
@@ -94,7 +94,7 @@ export default function Invite() {
                     htmlFor="lastName"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    Nom
+                    Nom *
                   </label>
                   <button
                     data-te-toggle="tooltip"
@@ -120,12 +120,12 @@ export default function Invite() {
                 </div>
               </div>
 
-              <div>
+              <div className="flex items-center justify-center">
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-[12px] bg-bounce-300 py-2 px-3 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="flex w-full justify-center rounded-3xl bg-bounce-200 py-2 px-20 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 md:w-auto"
                 >
-                  Se connecter
+                  S&apos;inscrire
                 </button>
               </div>
             </form>

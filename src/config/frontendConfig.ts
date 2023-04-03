@@ -16,7 +16,26 @@ export const frontendConfig = () => {
               [data-supertokens~="container"] {
                 background-color: #F9F5F3;
                 box-shadow: none;
-                width: 35%;
+              }
+
+              [data-supertokens~=button] {
+                    background-color: #0a121b;
+                    border: 0px;
+                    margin: 0 auto;
+                    font-weight: 500;
+                    padding-top: 0.625rem;
+                    padding-bottom: 0.625rem;
+                    padding-left: 1.25rem;
+                    padding-right: 1.25rem;
+                    border-radius: 1.5rem;
+                }
+            `,
+          },
+          submitNewPasswordForm: {
+            style: `
+              [data-supertokens~="container"] {
+                background-color: #F9F5F3;
+                box-shadow: none;
               }
 
               [data-supertokens~=button] {

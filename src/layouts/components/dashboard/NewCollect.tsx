@@ -6,8 +6,10 @@ import React, { Fragment, useState } from 'react';
 import Datepicker from 'react-tailwindcss-datepicker'; // https://react-tailwindcss-datepicker.vercel.app/advanced-features#localization
 import type { DateValueType } from 'react-tailwindcss-datepicker/dist/types';
 
+import { websiteDomain } from '@/config/appInfo';
 import type { INewCollect } from '@/interfaces/collect';
 import { postCollect } from '@/utils/api/collect';
+import { getUserMetaDataOnly } from '@/utils/api/user';
 
 import CollectSuccess from './CollectSuccess';
 
@@ -85,17 +87,26 @@ export default function NewCollect({
   }
 
   const handleSubmit = async (event: any) => {
+    event.preventDefault();
     if (!valueDate) {
       alert('No date selected');
       return;
     }
-    event.preventDefault();
+    const userMetadata = await getUserMetaDataOnly();
+    console.log('userMetadata', userMetadata);
+    const member = {
+      email: userMetadata.email,
+      name: userMetadata.first_name || null,
+      memberId: userMetadata.id,
+    };
     const collectRequest: INewCollect = {
       clubId,
       dateCollect: moment(valueDate.startDate).format('yyyy-MM-DD'),
       clubName,
       numberOfBox: box,
       description,
+      member,
+      urlRedirect: `${websiteDomain}/auth`,
     };
     try {
       setCollectRequestStatus('IN_PROGRESS');

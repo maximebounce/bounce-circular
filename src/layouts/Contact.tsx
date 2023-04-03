@@ -39,7 +39,7 @@ export default function Contact() {
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           Contact
         </h2>
-        <p className="mt-2 text-lg leading-8 text-bounceGray-200">
+        <p className="mt-2 text-sm leading-8 text-bounceGray-200">
           Vous souhaitez nous contacter? Vous pouvez nous envoyer un email
           depuis ce formulaire. Nous vous répondons au plus vite.
         </p>
@@ -206,13 +206,15 @@ export default function Contact() {
             </Switch.Label>
           </Switch.Group> */}
         </div>
-        <div className="mt-10">
-          <button
-            type="submit"
-            className="block w-full rounded-md bg-bounce-300 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm"
-          >
-            Restons en contact
-          </button>
+        <div className="flex items-center justify-center">
+          <div className="mt-10">
+            <button
+              type="submit"
+              className="w-full rounded-3xl bg-bounce-300 px-16 py-2.5 text-center text-sm font-semibold text-white shadow-sm md:w-auto"
+            >
+              Restons en contact
+            </button>
+          </div>
         </div>
       </form>
     </div>
