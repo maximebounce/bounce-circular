@@ -6,13 +6,13 @@ const stats = [
   },
   {
     id: 2,
-    label: "Nombre d'année pour qu'une balle se dégrade",
+    label: "Nombre d'années pour qu'une balle se dégrade",
     value: '2500 ans',
   },
   {
     id: 3,
-    label: 'Le pourcentage de balles recyclés en Europe',
-    value: '0.05%',
+    label: 'Le pourcentage de balles recyclées en Europe',
+    value: '<5%',
   },
 ];
 
@@ -26,8 +26,8 @@ export default function Mission() {
           </h2>
           <div className="mt-6 flex flex-col gap-y-20 gap-x-8 lg:flex-row">
             <div className="lg:w-full lg:max-w-2xl lg:flex-auto">
-              <p className="text-xl leading-8 text-gray-800">
-                Bounce a pour mission de rendre le tennis et le padel plus
+              <p className="text-xl font-semibold leading-8 text-gray-800">
+                Bounce a pour mission de rendre le tennis et le padel
                 éco-responsable.
               </p>
               {/* <img
@@ -38,10 +38,11 @@ export default function Mission() {
               <p className="mt-10 max-w-xl text-base leading-7 text-gray-700">
                 Le service Bounce Circular s&apos;inscrit dans cette démarche en
                 collaborant avec les fédérations, pour aider les clubs et leurs
-                membres à adopter des actions à faire de ces sports un exemple.
-                En mettant des poubelles de tris sur les terrains, les clubs
-                peuvent enfin récolter de nombreuses balles. Le service se
-                charge de la collecte et de donner une seconde vie aux balles.
+                membres à adopter des actions à faire de ces sports un exemple
+                d&apos;éco-responsabilité. En mettant des poubelles de tris sur
+                les terrains, les clubs peuvent enfin récolter de nombreuses
+                balles. Le service se charge de la collecte et de donner une
+                seconde vie aux balles.
               </p>
             </div>
             <div className="lg:flex lg:flex-auto lg:justify-center">

@@ -14,13 +14,13 @@ const features = [
   {
     name: 'Une communication pour vos membres',
     description:
-      'Des ressources sont disponibles à la demande: affiches & emails.  Vos membres doivent être informés et sensibilisés si vous souhaitez avoir un impact.',
+      "Un pack de communication à impact vous sera envoyé afin d'informer et sensibiliser de manière efficace vos membres.",
     icon: ChatBubbleBottomCenterIcon,
   },
   {
     name: 'Une plateforme simple et intuitive',
     description:
-      'Un accès à une plateforme intuitive pour programmer une collecte et suivre le statut de celle-ci. Garder un historique pour mesurer votre impact à travers les années.',
+      'Un accès à une plateforme intuitive pour programmer une collecte et suivre le statut de celle-ci. Gardez un historique pour mesurer votre impact à travers les années.',
     icon: ComputerDesktopIcon,
   },
 ];
@@ -31,7 +31,7 @@ export default function Features() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:text-center">
           <p className="text-3xl font-bold tracking-tight text-gray-200 sm:text-4xl">
-            Pourquoi vous allez adorer Bounce Circular pour votre club
+            Pourquoi vous allez adorer Bounce Circular
           </p>
         </div>
         <div className="mx-auto my-12 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">

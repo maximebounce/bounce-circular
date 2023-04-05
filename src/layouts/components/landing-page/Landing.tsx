@@ -22,9 +22,9 @@ export default function Landing() {
             </h1>
             <p className="mb-1 max-w-2xl font-light md:text-lg lg:mb-10">
               Le padel et le tennis sont ensemble un des sports les plus
-              polluant au monde. Bounce circular simplifie la vie des clubs
-              partenaires à collecter les balles, conscientiser ses membres et
-              donner une seconde vie à celles-ci.
+              polluants au monde. Bounce Circular permet l&apos;organisation
+              facile de la récolte et du recyclage des balles de votre club afin
+              de donner une seconde vie à celles-ci.
             </p>
             <div className="space-y-4 pt-10 sm:flex sm:space-y-0 sm:space-x-4">
               <Link
