@@ -14,13 +14,13 @@ export default function Landing() {
       <div className="bg-bounce-100 pb-20">
         <div className="mx-auto grid max-w-screen-xl px-4 pt-10 pb-8 lg:grid-cols-12 lg:gap-8 lg:py-16 lg:pt-28 xl:gap-0">
           <div className="mr-auto place-self-center lg:col-span-7">
+            <h1 className="mb-16 max-w-2xl pt-6 text-4xl font-bold leading-none tracking-tight dark:text-white md:text-4xl xl:text-5xl">
+              Bounce Circular
+            </h1>
             <h4 className="mb-8 max-w-2xl text-4xl leading-none tracking-tight dark:text-white md:text-xl xl:text-2xl">
               Service de recyclage des balles dans votre club
             </h4>
-            <h1 className="mb-8 max-w-2xl pt-6 text-4xl font-bold leading-none tracking-tight dark:text-white md:text-4xl xl:text-5xl">
-              Bounce Circular
-            </h1>
-            <p className="mb-1 max-w-2xl font-light md:text-lg lg:mb-10">
+            <p className="mb-1 max-w-xl font-light md:text-lg lg:mb-10">
               Le padel et le tennis sont ensemble un des sports les plus
               polluants au monde. Bounce Circular permet l&apos;organisation
               facile de la récolte et du recyclage des balles de votre club afin
@@ -37,15 +37,17 @@ export default function Landing() {
           </div>
           <div className="hidden lg:col-span-5 lg:mt-0 lg:flex">
             <Image
-              src="/assets/images/recycle-illustration.png"
+              src="/assets/images/recycle-illustration.png" // gregant.jpg
               alt="Recycle tennis balls"
-              width={500}
-              height={250}
+              className="rounded-3xl"
+              width={600}
+              height={350}
             />
           </div>
         </div>
         <ClientSection></ClientSection>
       </div>
+      {/* <Test></Test> */}
       <Features></Features>
       <PlatformSection></PlatformSection>
       <Mission></Mission>

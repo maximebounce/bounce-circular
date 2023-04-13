@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 const navigation = [
   { name: 'Dashboard', href: '#' },
-  { name: 'Profile', href: '#' },
+  { name: 'Profil', href: '#' },
 ];
 
 export default function NavigationBar() {

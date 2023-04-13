@@ -21,9 +21,11 @@ export default function NewCollect({
   clubId: string;
 }) {
   const collectOptions: { value: string; label: string }[] = [
-    { value: '1 Box', label: '1 Box en carton' },
-    { value: '2 Box', label: '2 Box en carton' },
-    { value: '3 Box', label: '3 Box en carton' },
+    { value: '1 carton', label: '1 carton' },
+    { value: '2 cartons', label: '2 cartons' },
+    { value: '3 cartons', label: '3 cartons' },
+    { value: '4 cartons', label: '4 cartons' },
+    { value: '5 cartons', label: '5 cartons' },
   ];
 
   function addWorkdays(startDate: Date, n: number): Date {
@@ -41,7 +43,7 @@ export default function NewCollect({
   }
   function setTextButton(value: string) {
     if (value === 'NOT_SEND') {
-      return 'Enregistrer';
+      return 'Je confirme la collecte';
     }
     if (value === 'IN_PROGRESS') {
       return 'En cours ...';
@@ -52,11 +54,11 @@ export default function NewCollect({
     if (value === 'FAILURE') {
       return "Erreur lors de l'enregistrement de la collecte";
     }
-    return 'Enregistrer';
+    return 'Je confirme la collecte';
   }
 
   const minDate = addWorkdays(new Date(), 2);
-  const defaultDate = addWorkdays(new Date(), 2);
+  const defaultDate = addWorkdays(new Date(), 3);
   const maxDate = addWorkdays(new Date(), 10);
   const [valueDate, setValue] = useState<DateValueType>({
     startDate: defaultDate,
@@ -64,7 +66,7 @@ export default function NewCollect({
   });
 
   const [box, setBox] = useState<string>(
-    collectOptions[0] ? collectOptions[0].value : '1 Box'
+    collectOptions[0] ? collectOptions[0].value : '1 carton'
   );
   const [description, setText] = useState<string>('');
   // const [date, setDate] = useState<Date | undefined>(defaultDate);
@@ -75,7 +77,6 @@ export default function NewCollect({
   //   setShow(state);
   // };
   const handleValueChange = (value: DateValueType) => {
-    console.log('value', value);
     setValue(value);
   };
   const handleChangeText = (textInput: string) => {
@@ -245,7 +246,8 @@ export default function NewCollect({
                     htmlFor="message"
                     className="block text-sm font-semibold leading-6 text-gray-900"
                   >
-                    Informations complémentaires (pour le transporteur)
+                    Informations complémentaires pour le transporteur (ex: où se
+                    trouve le carton)
                   </label>
                   <div className="mt-2.5">
                     <textarea
@@ -282,7 +284,7 @@ export default function NewCollect({
                 <blockquote className="text-lg font-semibold leading-8 text-gray-900">
                   <p>
                     “Le programme Bounce Circular est une évidence pour notre
-                    club. Tous les clubs devraient y songer.”
+                    club. Tous les clubs devraient y participer.”
                   </p>
                 </blockquote>
                 <figcaption className="mt-10 flex gap-x-6">

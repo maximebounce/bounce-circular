@@ -17,7 +17,7 @@ export default function Head({ club }: { club: IClub }) {
         <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
           <div className="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
             <dt className="truncate text-sm font-medium text-gray-500">
-              Nombre de collectes effectués
+              Nombre de collectes effectuées
             </dt>
             <dd className="mt-1 text-3xl font-semibold tracking-tight text-gray-900">
               {club.numberCollects}
@@ -26,7 +26,7 @@ export default function Head({ club }: { club: IClub }) {
 
           <div className="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
             <dt className="truncate text-sm font-medium text-gray-500">
-              Nombre de collectes disponible
+              # collectes disponibles
             </dt>
             <dd className="mt-1 text-3xl font-semibold tracking-tight text-gray-900">
               2

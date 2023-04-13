@@ -6,11 +6,11 @@ export default function Profile({ club }: { club: IClub }) {
     <div className="overflow-hidden bg-white p-6 sm:rounded-lg">
       <div className="py-5 sm:px-6">
         <h3 className="text-base font-semibold leading-6 text-gray-900">
-          Information du club
+          Informations de votre club
         </h3>
-        <p className="mt-1 max-w-2xl text-sm text-gray-500">
+        {/* <p className="mt-1 max-w-2xl text-sm text-gray-500">
           Détails des informations de contact
-        </p>
+        </p> */}
       </div>
       <div className="border-t border-gray-200 px-4 py-5 sm:p-0">
         <dl className="sm:divide-y sm:divide-gray-200">
@@ -47,7 +47,7 @@ export default function Profile({ club }: { club: IClub }) {
           </div>
           <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
             <dt className="text-sm font-medium text-bounceGray-200">
-              Emplacement cartons pour le transporteur
+              Informations de collecte pour le transporteur
             </dt>
             <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
               {club?.details}

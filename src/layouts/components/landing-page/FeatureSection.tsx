@@ -29,7 +29,7 @@ export default function Features() {
   return (
     <div className="bg-bounce-200 py-4 sm:py-10">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:text-center">
+        <div className="mx-auto max-w-3xl lg:text-center">
           <p className="text-3xl font-bold tracking-tight text-gray-200 sm:text-4xl">
             Pourquoi vous allez adorer Bounce Circular
           </p>

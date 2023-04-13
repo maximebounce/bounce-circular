@@ -16,9 +16,9 @@ const faqs = [
   {
     question: 'Concrètement que deviennent ces balles?',
     answer:
-      "A l'heure actuelle, nous broyons les balles afin d'extraire le caoutchcouc des balles pour le réutiliser. Ce résidu broyer sert ensuite de matière première pour des sols de surfaces de jeux pour enfants ou de salles sportives.",
+      "A l'heure actuelle, nous broyons les balles afin d'en extraire le caoutchcouc. Ce résidu broyé sert ensuite de matière première pour des sols de surfaces de sport à destination de bonnes oeuvres.",
     description:
-      "Bounce étudie également d'autres options afin de revaloriser aux mieux le caoutchouc et la feutrine. Plus d'informations sur ce sujet, prochainement.",
+      "Bounce étudie également d'autres options afin de revaloriser au mieux le caoutchouc et la feutrine. Plus d'informations sur ce sujet, prochainement.",
   },
   // More questions...
 ];

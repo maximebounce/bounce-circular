@@ -12,7 +12,7 @@ export default function Invoices() {
           <p className="mt-6 text-lg leading-8 text-gray-600">
             Si vous souhaitez accéder à vos factures, veuillez prendre contact
             avec Gregory à l&apos;adresse:{' '}
-            <strong>hello@bouncesports.co</strong>
+            <strong>gregory@bouncesports.co</strong>
           </p>
         </div>
       </div>

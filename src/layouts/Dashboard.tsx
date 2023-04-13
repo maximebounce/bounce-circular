@@ -2,7 +2,9 @@ import { Dialog, Menu, Transition } from '@headlessui/react';
 import { BuildingOfficeIcon } from '@heroicons/react/20/solid';
 import {
   ArchiveBoxIcon,
+  // ArchiveBoxIcon,
   Bars3CenterLeftIcon,
+  CalculatorIcon,
   CalendarDaysIcon,
   DocumentChartBarIcon,
   // EnvelopeIcon,
@@ -12,7 +14,7 @@ import {
   UserCircleIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline';
-import { orderBy } from 'lodash';
+import _, { orderBy } from 'lodash';
 import moment from 'moment';
 import Link from 'next/link';
 import { Fragment, useState } from 'react';
@@ -50,13 +52,13 @@ export default function Dashboard({ club }: { club: IClub }) {
   ];
 
   const secondaryNavigation = [
-    { name: 'Profile', icon: UserCircleIcon },
+    { name: 'Profil', icon: UserCircleIcon },
     { name: 'FAQ', icon: QuestionMarkCircleIcon },
     // { name: 'Contact', icon: EnvelopeIcon },
   ];
 
   const menuItems = [
-    { name: 'Profile' },
+    { name: 'Profil' },
     // { name: 'Settings' }
   ];
 
@@ -86,21 +88,50 @@ export default function Dashboard({ club }: { club: IClub }) {
     };
   });
 
+  const numberBallsCollected = collectsSorted.map((collect) => {
+    let nbBalls = 0;
+    if (collect.numberOfBox === '1 carton') {
+      nbBalls = 400;
+    } else if (collect.numberOfBox === '2 cartons') {
+      nbBalls = 2 * 400;
+    } else if (collect.numberOfBox === '3 cartons') {
+      nbBalls = 3 * 400;
+    } else if (collect.numberOfBox === '4 cartons') {
+      nbBalls = 4 * 400;
+    } else if (collect.numberOfBox === '5 cartons') {
+      nbBalls = 5 * 400;
+    }
+    return { nbBalls };
+  });
+
+  const estimationBallsCollected: number = _.sumBy(
+    numberBallsCollected,
+    'nbBalls'
+  );
+
   const overviews = [
     {
-      name: 'Nombre de collectes effectués',
+      name: 'Nombre de collectes effectuées',
       href: '#',
       icon: ArchiveBoxIcon,
       amount: club && club.collects ? club.collects.length : 0,
     },
+    // {
+    //   name: '# collectes disponibles',
+    //   href: '#',
+    //   icon: ArchiveBoxIcon,
+    //   amount:
+    //     club.numberCollectsAvailable ||
+    //     'Pas de limite (durant la phase pilote)',
+    // },
     {
-      name: 'Nombre de collectes encore disponible',
+      name: 'Estimation nombre de balles recyclées',
       href: '#',
-      icon: ArchiveBoxIcon,
-      amount: club.numberCollectsAvailable,
+      icon: CalculatorIcon,
+      amount: estimationBallsCollected,
     },
     {
-      name: 'Date de début du contrat',
+      name: 'Date de fin du contrat',
       href: '#',
       icon: CalendarDaysIcon,
       amount: moment(club.startingDate).utc().format('DD/MM/YYYY'),
@@ -432,7 +463,7 @@ export default function Dashboard({ club }: { club: IClub }) {
                               </span>
                             </span>
                             <h1 className="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:leading-9">
-                              Bonjour,
+                              Bonjour
                             </h1>
                           </div>
                           <dl className="mt-6 flex flex-col sm:ml-3 sm:mt-1 sm:flex-row sm:flex-wrap sm:pt-4">
@@ -501,7 +532,7 @@ export default function Dashboard({ club }: { club: IClub }) {
                                   {card.name}
                                 </dt>
                                 <dd>
-                                  <div className="text-lg font-medium text-gray-900">
+                                  <div className="text-md font-medium text-gray-800">
                                     {card.amount}
                                   </div>
                                 </dd>
@@ -525,7 +556,7 @@ export default function Dashboard({ club }: { club: IClub }) {
                 </div>
 
                 <h2 className="mx-auto mt-8 max-w-6xl px-4 text-lg font-medium leading-6 text-gray-900 sm:px-6 lg:px-8">
-                  Historique des collectes
+                  Historique des collectes effectuées
                 </h2>
 
                 {/* Activity list (smallest breakpoint only) */}
@@ -613,13 +644,13 @@ export default function Dashboard({ club }: { club: IClub }) {
                                 className="bg-gray-50 px-6 py-3 text-left text-sm font-semibold text-gray-900"
                                 scope="col"
                               >
-                                Statut
+                                Statut de la collecte
                               </th>
                               <th
                                 className="bg-gray-50 px-6 py-3 text-left text-sm font-semibold text-gray-900"
                                 scope="col"
                               >
-                                Nombre de carton
+                                Nombre de carton(s) collecté(s)
                               </th>
                             </tr>
                           </thead>
@@ -688,7 +719,7 @@ export default function Dashboard({ club }: { club: IClub }) {
               </div>
             </main>
           )}
-          {currentTab === 'Profile' && <Profile club={club}></Profile>}
+          {currentTab === 'Profil' && <Profile club={club}></Profile>}
           {currentTab === 'FAQ' && <FaqComponent></FaqComponent>}
           {currentTab === 'Factures' && <Invoices></Invoices>}
           {currentTab === 'Contact' && <Contact></Contact>}
