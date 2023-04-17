@@ -95,30 +95,30 @@ export const defaultTranslationsEmailPassword = {
     EMAIL_PASSWORD_PASSWORD_LABEL: 'Mot de passe',
     EMAIL_PASSWORD_PASSWORD_PLACEHOLDER: 'Mot de passe',
 
-    EMAIL_PASSWORD_SIGN_IN_HEADER_TITLE: 'Se connecter à votre espace club',
+    EMAIL_PASSWORD_SIGN_IN_HEADER_TITLE: 'Me connecter à mon espace club',
     EMAIL_PASSWORD_SIGN_IN_HEADER_SUBTITLE_START:
       "Votre club n'est pas encore isncrit?",
-    EMAIL_PASSWORD_SIGN_IN_HEADER_SUBTITLE_SIGN_UP_LINK: "S'inscrire",
+    EMAIL_PASSWORD_SIGN_IN_HEADER_SUBTITLE_SIGN_UP_LINK: "M'inscrire",
     EMAIL_PASSWORD_SIGN_IN_HEADER_SUBTITLE_END: '',
     EMAIL_PASSWORD_SIGN_IN_FOOTER_FORGOT_PW_LINK: 'Mot de passe oublié?',
-    EMAIL_PASSWORD_SIGN_IN_SUBMIT_BTN: 'Se connecter',
+    EMAIL_PASSWORD_SIGN_IN_SUBMIT_BTN: 'Me connecter',
     EMAIL_PASSWORD_SIGN_IN_WRONG_CREDENTIALS_ERROR:
       "Le mot de passe ou l'email est incorrecte",
 
-    EMAIL_PASSWORD_SIGN_UP_HEADER_TITLE: "S'inscrire",
+    EMAIL_PASSWORD_SIGN_UP_HEADER_TITLE: "M'inscrire",
     EMAIL_PASSWORD_SIGN_UP_HEADER_SUBTITLE_START: 'Déjà un compte?',
-    EMAIL_PASSWORD_SIGN_UP_HEADER_SUBTITLE_SIGN_IN_LINK: 'Se connecter',
+    EMAIL_PASSWORD_SIGN_UP_HEADER_SUBTITLE_SIGN_IN_LINK: 'Me connecter',
     EMAIL_PASSWORD_SIGN_UP_HEADER_SUBTITLE_END: '',
     EMAIL_PASSWORD_SIGN_UP_FOOTER_START: 'By continuing, you agree to our ',
     EMAIL_PASSWORD_SIGN_UP_FOOTER_TOS: 'Terms of Service',
     EMAIL_PASSWORD_SIGN_UP_FOOTER_AND: ' and ',
     EMAIL_PASSWORD_SIGN_UP_FOOTER_PP: 'Privacy Policy',
     EMAIL_PASSWORD_SIGN_UP_FOOTER_END: '',
-    EMAIL_PASSWORD_SIGN_UP_SUBMIT_BTN: "S'inscrire",
+    EMAIL_PASSWORD_SIGN_UP_SUBMIT_BTN: "M'inscrire",
 
     EMAIL_PASSWORD_EMAIL_ALREADY_EXISTS: 'Cette adresse email existe déjà.',
 
-    EMAIL_PASSWORD_RESET_HEADER_TITLE: 'Changer votre mot de passe',
+    EMAIL_PASSWORD_RESET_HEADER_TITLE: 'Changez votre mot de passe',
     EMAIL_PASSWORD_RESET_HEADER_SUBTITLE:
       'Nous allons envoyer un email pour mettre à jour votre mot de passe.',
     EMAIL_PASSWORD_RESET_SEND_FALLBACK_EMAIL: 'Votre compte',
@@ -126,24 +126,24 @@ export const defaultTranslationsEmailPassword = {
       'Une demande de mise à jour de votre mot a été envoyé ',
     EMAIL_PASSWORD_RESET_SEND_AFTER_EMAIL:
       ', si il existe dans notre système. ',
-    EMAIL_PASSWORD_RESET_RESEND_LINK: "Renvoyer ou changer d'email",
+    EMAIL_PASSWORD_RESET_RESEND_LINK: "Renvoyez ou changez d'email",
     EMAIL_PASSWORD_RESET_SEND_BTN: "M'envoyer un email",
-    EMAIL_PASSWORD_RESET_SIGN_IN_LINK: 'Se connecter',
+    EMAIL_PASSWORD_RESET_SIGN_IN_LINK: 'Me connecter',
 
     EMAIL_PASSWORD_RESET_SUBMIT_PW_SUCCESS_HEADER_TITLE: 'Validé!',
     EMAIL_PASSWORD_RESET_SUBMIT_PW_SUCCESS_DESC:
       'Votre mot de passe a bien été enregistré',
-    EMAIL_PASSWORD_RESET_SUBMIT_PW_SUCCESS_SIGN_IN_BTN: 'Se connecter',
+    EMAIL_PASSWORD_RESET_SUBMIT_PW_SUCCESS_SIGN_IN_BTN: 'Me connecter',
 
     EMAIL_PASSWORD_NEW_PASSWORD_LABEL: 'Nouveau mot de passe',
     EMAIL_PASSWORD_NEW_PASSWORD_PLACEHOLDER: 'Nouveau mot de passe',
-    EMAIL_PASSWORD_CONFIRM_PASSWORD_LABEL: 'Confirmer votre mot de passe',
-    EMAIL_PASSWORD_CONFIRM_PASSWORD_PLACEHOLDER: 'Confirmer votre mot de passe',
+    EMAIL_PASSWORD_CONFIRM_PASSWORD_LABEL: 'Confirmez votre mot de passe',
+    EMAIL_PASSWORD_CONFIRM_PASSWORD_PLACEHOLDER: 'Confirmez votre mot de passe',
 
     EMAIL_PASSWORD_RESET_SUBMIT_PW_HEADER_TITLE:
-      'Entrer un nouveau mot de passe', // 'Changer votre mot de passe',
+      'Entrez un nouveau mot de passe', // 'Changer votre mot de passe',
     EMAIL_PASSWORD_RESET_SUBMIT_PW_HEADER_SUBTITLE: '', // 'Entrer un nouveau mot de passe',
-    EMAIL_PASSWORD_RESET_SUBMIT_PW_CHANGE_PW_BTN: 'Changer votre mot de passe',
+    EMAIL_PASSWORD_RESET_SUBMIT_PW_CHANGE_PW_BTN: 'Changez votre mot de passe',
     EMAIL_PASSWORD_RESET_PASSWORD_INVALID_TOKEN_ERROR:
       'Mise à jour du mot de passe invalide',
 
@@ -158,8 +158,7 @@ export const defaultTranslationsEmailPassword = {
     ERROR_PASSWORD_NO_ALPHA:
       'Le mot de passe doit contenir au moins une lettre',
     ERROR_PASSWORD_NO_NUM: 'Le mot de passe doit contenir au moins un chiffre',
-    ERROR_CONFIRM_PASSWORD_NO_MATCH:
-      'Les mots de passes ne sont pas identiques',
+    ERROR_CONFIRM_PASSWORD_NO_MATCH: 'Les mots de passe ne sont pas identiques',
 
     ERROR_NON_OPTIONAL: 'Champ non optionel',
 

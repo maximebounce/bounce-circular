@@ -38,20 +38,28 @@ export default async function createUser(req: SessionRequest, res: any) {
   const { email, firstName, lastName, clubId } = data;
   console.log('body', req.body);
   if (!clubId || clubId == null) {
-    res.status(400).json({ message: 'We cannot link your account to a club' });
+    res.status(400).json({
+      message:
+        'Impossible de lier votre comptre à votre club. Assurez vous du lien de connexion.',
+    });
     return;
   }
 
   const clubFromNotion = await checkIfclubExist(clubId as string);
   console.log('clubFromNotion', clubFromNotion);
   if (!clubFromNotion || (clubFromNotion && clubFromNotion.id !== clubId)) {
-    res.status(400).json({ message: 'We cannot link your account to a club' });
+    res.status(400).json({
+      message:
+        'Impossible de lier votre comptre à votre club. Assurez vous du lien de connexion.',
+    });
     return;
   }
 
   const signUpResult = await EmailPassword.signUp(email, appInfo.FAKE_PASSWORD);
   if (signUpResult.status === 'EMAIL_ALREADY_EXISTS_ERROR') {
-    res.status(400).json({ message: 'User already exists' });
+    res.status(400).json({
+      message: 'Un compte existe déjà avec cette adresse',
+    });
     return;
   }
 
@@ -61,7 +69,7 @@ export default async function createUser(req: SessionRequest, res: any) {
   );
 
   if (passwordResetToken.status === 'UNKNOWN_USER_ID_ERROR') {
-    throw new Error('Should never come here');
+    throw new Error('Une erreur est parvenue');
   }
 
   const response = await updateUserMetadata(signUpResult.user.id, {

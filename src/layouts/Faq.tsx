@@ -23,7 +23,7 @@ const faqs = [
   {
     question: "L'opération totale est-elle neutre en carbone?",
     answer:
-      "Oui, Bounce compense toutes les émissions de CO2 liée à l'opération afin de la rendre 100% neutre en carbone.",
+      "Oui, Bounce compense toutes les émissions de CO2 liées à l'opération afin de la rendre 100% neutre en carbone.",
   },
 
   // More questions...

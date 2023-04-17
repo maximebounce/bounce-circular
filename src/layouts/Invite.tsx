@@ -1,4 +1,5 @@
-import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
+// import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
+import _ from 'lodash';
 import { useSearchParams } from 'next/navigation';
 import Router from 'next/router';
 import { useState } from 'react';
@@ -15,9 +16,11 @@ export default function Invite() {
   const [email, setEmail] = useState<string>('');
   const [sending, setSending] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
+  const [errors, setErrors] = useState<string[]>(['']);
 
   const handleBlur = () => {
     setError(false);
+    setErrors([]);
   };
 
   const handleSubmit = async (event: any) => {
@@ -37,6 +40,7 @@ export default function Invite() {
       if (response && response.redirectUrl) {
         Router.push(response.redirectUrl);
       } else {
+        setErrors([response.message]);
         setError(true);
       }
     } catch (e: any) {
@@ -129,7 +133,7 @@ export default function Invite() {
                   >
                     Prénom *
                   </label>
-                  <button
+                  {/* <button
                     data-te-toggle="tooltip"
                     data-te-html="true"
                     data-te-ripple-init
@@ -140,7 +144,7 @@ export default function Invite() {
                       className="h-5 w-5 text-gray-400"
                       aria-hidden="true"
                     ></QuestionMarkCircleIcon>
-                  </button>
+                  </button> */}
                 </div>
                 <div className="mt-2">
                   <input
@@ -164,7 +168,7 @@ export default function Invite() {
                   >
                     Nom *
                   </label>
-                  <button
+                  {/* <button
                     data-te-toggle="tooltip"
                     data-te-html="true"
                     data-te-ripple-init
@@ -175,7 +179,7 @@ export default function Invite() {
                       className="h-5 w-5 text-gray-400"
                       aria-hidden="true"
                     ></QuestionMarkCircleIcon>
-                  </button>
+                  </button> */}
                 </div>
                 <div className="mt-2">
                   <input
@@ -200,15 +204,20 @@ export default function Invite() {
                   {sending === false ? "S'inscrire" : '...'}
                 </button>
               </div>
-              {error && (
+              {error && !errors && (
                 <div className="flex items-center justify-center">
-                  <p
-                    role="alert"
-                    className="py-2"
-                    style={{ color: 'rgb(255, 0, 0)' }}
-                  >
+                  <p role="alert" className="py-2 text-red-500">
                     Une erreur est parvenue.
                   </p>
+                </div>
+              )}
+              {errors && (
+                <div className="flex items-center justify-center">
+                  {_.map(errors, (err, index) => (
+                    <p key={index} role="alert" className="py-2 text-red-500">
+                      {err}
+                    </p>
+                  ))}
                 </div>
               )}
             </form>

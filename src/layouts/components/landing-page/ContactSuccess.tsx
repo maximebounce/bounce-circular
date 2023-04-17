@@ -20,7 +20,7 @@ export default function ContactSuccess() {
               href="/"
               className="rounded-md bg-bounce-300 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm"
             >
-              Page principal <span aria-hidden="true">→</span>
+              Page principale <span aria-hidden="true">→</span>
             </Link>
             {/* <a
               href="/dashboard"
