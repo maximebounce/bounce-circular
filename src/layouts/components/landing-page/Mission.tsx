@@ -1,17 +1,17 @@
 const stats = [
   {
     id: 1,
-    label: 'Nombre de balles produites chaque année dans le monde',
-    value: '500M+',
+    label: 'Nombre de balles produites et utilisées chaque année dans le monde',
+    value: '350M+',
   },
   {
     id: 2,
-    label: "Nombre d'années pour qu'une balle se dégrade",
+    label: "Nombre d'années pour qu'une balle se dégrade naturellement",
     value: '2500 ans',
   },
   {
     id: 3,
-    label: 'Le pourcentage de balles recyclées en Europe',
+    label: 'Le pourcentage de balles recyclées dans le monde',
     value: '<5%',
   },
 ];
@@ -36,14 +36,23 @@ export default function Mission() {
                 className="h-60"
               ></img> */}
               <p className="mt-10 max-w-xl text-base leading-7 text-gray-700">
-                Le service Bounce Circular s&apos;inscrit dans cette démarche en
+                Bounce Circular s&apos;inscrit dans cette vision en collaborant
+                avec les fédérations et les clubs de tennis & de padel pour les
+                aider à sensibiliser leurs membres à adopter des actions simples
+                pour rendre leurs sports éco-responsables. En plaçant des
+                poubelles de tri sur chaque terrain, le tri et le recyclage
+                devient simple, ce qui permet de récolter la (quasi) totalité
+                des balles dans les clubs. Bounce Circular s&apos;occupe ensuite
+                de la collecte des balles et de les recycler pour leur donner
+                une seconde vie.
+              </p>
+              {/* Le service Bounce Circular s&apos;inscrit dans cette démarche en
                 collaborant avec les fédérations, pour aider les clubs et leurs
                 membres à adopter des actions à faire de ces sports un exemple
                 d&apos;éco-responsabilité. En mettant des poubelles de tris sur
                 les terrains, les clubs peuvent enfin récolter de nombreuses
                 balles. Le service se charge de la collecte et de donner une
-                seconde vie aux balles.
-              </p>
+                seconde vie aux balles.  */}
             </div>
             <div className="lg:flex lg:flex-auto lg:justify-center">
               <dl className="w-64 space-y-8 xl:w-80">

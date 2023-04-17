@@ -20,6 +20,12 @@ const faqs = [
     description:
       "Bounce étudie également d'autres options afin de revaloriser au mieux le caoutchouc et la feutrine. Plus d'informations sur ce sujet, prochainement.",
   },
+  {
+    question: "L'opération totale est-elle neutre en carbone?",
+    answer:
+      "Oui, Bounce compense toutes les émissions de CO2 liée à l'opération afin de la rendre 100% neutre en carbone.",
+  },
+
   // More questions...
 ];
 

@@ -8,7 +8,7 @@ const features = [
   {
     name: 'Programmez une collecte.',
     description:
-      'Connetctez vous à la plateforme et enregistrer une demande de collecte.',
+      'Connectez-vous à la plateforme et enregistrez une demande de collecte.',
     icon: CalendarDaysIcon,
   },
   {
@@ -36,7 +36,7 @@ export default function PlatformSection() {
                 Un service de qualité
               </h2> */}
               <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                Programmez une collecte en quelques clicks
+                Programmez une collecte en quelques clics
               </p>
               {/* <p className="mt-6 text-lg leading-8 text-gray-600">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.

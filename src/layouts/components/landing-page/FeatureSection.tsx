@@ -8,13 +8,14 @@ const features = [
   {
     name: 'Des poubelles sur chaque terrain',
     description:
-      'Des poubelles de tri sur chaque terrain pour faciliter et encourager les joueurs à recycler. Des containers sont aussi inclus pour rassembler les balles.',
+      "Des poubelles de tri sont placées sur chaque terrain pour faciliter et encourager les joueurs à trier les balles afin qu'elles soient recyclées. Des containers pré-affranchis sont aussi inclus pour centraliser les balles et faciliter leur évacuation.",
+    // 'Des poubelles de tri sur chaque terrain pour faciliter et encourager les joueurs à recycler. Des containers sont aussi inclus pour rassembler les balles.',
     icon: TrashIcon,
   },
   {
     name: 'Une communication pour vos membres',
     description:
-      "Un pack de communication à impact vous sera envoyé afin d'informer et sensibiliser de manière efficace vos membres.",
+      'Un pack de communication impactant vous sera envoyé pour vous aider à informer et sensibiliser efficacement vos membres à la démarche.',
     icon: ChatBubbleBottomCenterIcon,
   },
   {

@@ -73,7 +73,7 @@ export default function Foot() {
         <p className="mt-10 text-center text-xs leading-5 text-gray-500">
           <span>
             © 2023{' '}
-            <a href="https://bouncesport.co/" className="hover:underline">
+            <a href="https://bouncesports.co/" className="hover:underline">
               Bounce Sports International
             </a>
             . All Rights Reserved.

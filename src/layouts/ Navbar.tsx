@@ -12,7 +12,7 @@ import { useScrollPosition } from '@/hooks';
 //     'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 // };
 const navigation = [
-  { name: 'Se connecter', href: '/auth', current: true },
+  { name: 'Me connecter', href: '/auth', current: true },
   { name: 'Nous contacter', href: '/contact', current: true },
 ];
 // const userNavigation = [
@@ -66,7 +66,7 @@ export default function NavBar() {
           onClick={() => redirect('/auth')}
           className="ml-2 rounded-3xl border-2 bg-bounce-200 px-5 py-2.5 font-medium text-bounce-100 hover:bg-bounce-100 hover:text-bounce-200"
         >
-          Se connecter
+          Me connecter
         </button>
       </div>
     );
@@ -84,7 +84,7 @@ export default function NavBar() {
           onClick={() => redirect('/auth')}
           className="ml-2 rounded-3xl border-2 bg-bounce-200 px-5 py-2.5 font-medium text-bounce-100 hover:border-bounce-200 hover:bg-bounce-100 hover:text-bounce-200"
         >
-          Se connecter
+          Me connecter
         </button>
       </div>
     );

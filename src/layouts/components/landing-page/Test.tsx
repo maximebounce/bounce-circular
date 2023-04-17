@@ -23,7 +23,7 @@ export default function Test() {
                 href="/auth"
                 className="inline-flex w-full items-center justify-center rounded-3xl border-2 bg-bounce-300 px-5 py-2.5 text-center  font-medium text-white sm:w-auto"
               >
-                Se connecter
+                Me connecter
               </Link>
             </div>
           </div>
