@@ -94,7 +94,6 @@ export default function NewCollect({
       return;
     }
     const userMetadata = await getUserMetaDataOnly();
-    console.log('userMetadata', userMetadata);
     const member = {
       email: userMetadata.email,
       name: userMetadata.first_name || null,

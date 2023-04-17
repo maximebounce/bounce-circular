@@ -1,11 +1,8 @@
 import type { SessionRequest } from 'supertokens-node/framework/express';
-import { superTokensNextWrapper } from 'supertokens-node/nextjs';
 import EmailPassword from 'supertokens-node/recipe/emailpassword';
-import { verifySession } from 'supertokens-node/recipe/session/framework/express';
 import { updateUserMetadata } from 'supertokens-node/recipe/usermetadata';
 
 import { checkIfclubExist } from '@/utils/api/club';
-import { resetPasswordEmail } from '@/utils/api/reset-password';
 
 // import UserRoles from 'supertokens-node/recipe/userroles';
 import { appInfo } from '../../config/appInfo';
@@ -29,18 +26,17 @@ export default async function createUser(req: SessionRequest, res: any) {
   // );
 
   // we first verify the session
-  await superTokensNextWrapper(
-    async (next) => {
-      return verifySession()(req, res, next);
-    },
-    req,
-    res
-  );
+  // await superTokensNextWrapper(
+  //   async (next) => {
+  //     return verifySession()(req, res, next);
+  //   },
+  //   req,
+  //   res
+  // );
 
-  const { email, firstName, lastName } = req.body; // data
-  const { clubId } = req.query;
-  console.log('clubId', clubId);
-  console.log('type', typeof clubId);
+  const data = JSON.parse(req.body);
+  const { email, firstName, lastName, clubId } = data;
+  console.log('body', req.body);
   if (!clubId || clubId == null) {
     res.status(400).json({ message: 'We cannot link your account to a club' });
     return;
@@ -88,6 +84,6 @@ export default async function createUser(req: SessionRequest, res: any) {
   //     id: signUpResult.user.id,
   //   },
   // });
-  await resetPasswordEmail(inviteLink, signUpResult.user.email);
-  res.status(200).json({ message: 'Success' });
+  // await resetPasswordEmail(inviteLink, signUpResult.user.email);
+  res.status(200).json({ redirectUrl: inviteLink });
 }

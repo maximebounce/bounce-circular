@@ -4,7 +4,7 @@ export const getUserWithMetaData = async () => {
   const urlApi = `${websiteDomain}/api/user/`;
   const headers = new Headers();
   headers.set('method', 'GET');
-  headers.set('mode', 'GcorsET');
+  headers.set('mode', 'cors');
   headers.set('credentials', 'include');
   const options = {
     method: 'GET',
@@ -19,7 +19,7 @@ export const getUserMetaDataOnly = async () => {
   const urlApi = `${websiteDomain}/api/userMetaData/`;
   const headers = new Headers();
   headers.set('method', 'GET');
-  headers.set('mode', 'GcorsET');
+  headers.set('mode', 'cors');
   headers.set('credentials', 'include');
   const options = {
     method: 'GET',

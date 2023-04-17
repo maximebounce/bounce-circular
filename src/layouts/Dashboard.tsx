@@ -88,7 +88,7 @@ export default function Dashboard({ club }: { club: IClub }) {
     };
   });
 
-  const estimatedBallsInBox: number = 396;
+  const estimatedBallsInBox: number = 400;
   const numberBallsCollected = collectsSorted.map((collect) => {
     let nbBalls = 0;
     if (collect.numberOfBox === '1 carton') {

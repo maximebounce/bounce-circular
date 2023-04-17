@@ -7,19 +7,29 @@ import { useState } from 'react';
 import type { INewMesagge } from '@/interfaces/message';
 import { postMessageContact } from '@/utils/api/contact';
 
+import ContactSuccess from './components/landing-page/ContactSuccess';
+
 export default function Contact() {
-  const [fisrtname, setFirstname] = useState<string>('');
+  const [firstname, setFirstname] = useState<string>('');
   const [lastname, setLastname] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [club, setClubname] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
   const [message, setMessage] = useState<string>('');
+  const [sending, setSending] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [messageSent, setMessgage] = useState<boolean>(false);
   // const [agreed, setAgreed] = useState(false);
+
+  const handleBlur = () => {
+    setError(false);
+  };
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
+    setSending(true);
     const newMessage: INewMesagge = {
-      fisrtname,
+      firstname,
       lastname,
       email,
       club,
@@ -28,18 +38,25 @@ export default function Contact() {
     };
     try {
       await postMessageContact(newMessage);
+      setMessgage(true);
     } catch (e: any) {
       console.log('error', e);
+      setError(true);
     }
+    setSending(false);
   };
 
+  if (messageSent) {
+    return <ContactSuccess></ContactSuccess>;
+  }
+
   return (
-    <div className="isolate px-4 pb-12 pt-6 sm:pb-12 sm:pt-6">
+    <div className="isolate px-4 pb-12 pt-6 sm:pb-12 sm:pt-6 lg:mb-24">
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           Contact
         </h2>
-        <p className="mt-2 text-sm leading-8 text-bounceGray-200">
+        <p className="mt-2 text-sm leading-8 text-gray-800">
           Vous souhaitez nous contacter? Vous pouvez nous envoyer un email
           depuis ce formulaire. Nous vous répondons au plus vite.
         </p>
@@ -55,11 +72,13 @@ export default function Contact() {
             </label>
             <div className="mt-2.5">
               <input
-                value={fisrtname}
+                value={firstname}
                 onChange={(e) => setFirstname(e.target.value)}
+                onBlur={handleBlur}
                 type="text"
                 name="first-name"
                 id="first-name"
+                required
                 autoComplete="given-name"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-400 placeholder:text-gray-400 sm:text-sm sm:leading-6"
               />
@@ -76,9 +95,11 @@ export default function Contact() {
               <input
                 value={lastname}
                 onChange={(e) => setLastname(e.target.value)}
+                onBlur={handleBlur}
                 type="text"
                 name="last-name"
                 id="last-name"
+                required
                 autoComplete="family-name"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-400 placeholder:text-gray-400 sm:text-sm sm:leading-6"
               />
@@ -89,15 +110,17 @@ export default function Contact() {
               htmlFor="company"
               className="block text-sm font-semibold leading-6 text-gray-900"
             >
-              Nom du club
+              Nom du club *
             </label>
             <div className="mt-2.5">
               <input
                 value={club}
                 onChange={(e) => setClubname(e.target.value)}
+                onBlur={handleBlur}
                 type="text"
                 name="company"
                 id="company"
+                required
                 autoComplete="organization"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-400 placeholder:text-gray-400 sm:text-sm sm:leading-6"
               />
@@ -108,15 +131,17 @@ export default function Contact() {
               htmlFor="email"
               className="block text-sm font-semibold leading-6 text-gray-900"
             >
-              Email
+              Email *
             </label>
             <div className="mt-2.5">
               <input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                onBlur={handleBlur}
                 type="email"
                 name="email"
                 id="email"
+                required
                 autoComplete="email"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-400 placeholder:text-gray-400 sm:text-sm sm:leading-6"
               />
@@ -151,6 +176,7 @@ export default function Contact() {
               <input
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
+                onBlur={handleBlur}
                 type="tel"
                 name="phone-number"
                 id="phone-number"
@@ -164,15 +190,17 @@ export default function Contact() {
               htmlFor="message"
               className="block text-sm font-semibold leading-6 text-gray-900"
             >
-              Message
+              Message *
             </label>
             <div className="mt-2.5">
               <textarea
                 value={message}
+                onBlur={handleBlur}
                 onChange={(e) => setMessage(e.target.value)}
                 name="message"
                 id="message"
                 rows={4}
+                required
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-400 placeholder:text-gray-400 sm:text-sm sm:leading-6"
               />
             </div>
@@ -209,13 +237,25 @@ export default function Contact() {
         <div className="flex items-center justify-center">
           <div className="mt-10">
             <button
+              disabled={sending}
               type="submit"
               className="w-full rounded-3xl bg-bounce-300 px-16 py-2.5 text-center text-sm font-semibold text-white shadow-sm md:w-auto"
             >
-              Restons en contact
+              {sending === false ? 'Restons en contact' : '...'}
             </button>
           </div>
         </div>
+        {error && (
+          <div className="flex items-center justify-center">
+            <p
+              role="alert"
+              className="py-2"
+              style={{ color: 'rgb(255, 0, 0)' }}
+            >
+              Une erreur est parvenue.
+            </p>
+          </div>
+        )}
       </form>
     </div>
   );

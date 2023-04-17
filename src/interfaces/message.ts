@@ -1,5 +1,5 @@
 export type INewMesagge = {
-  fisrtname: string;
+  firstname: string;
   lastname: string;
   email: string;
   club: string;

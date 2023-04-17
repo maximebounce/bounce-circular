@@ -1,3 +1,6 @@
+import { websiteDomain } from '@/config/appInfo';
+import type { IInvite } from '@/interfaces/invite';
+
 export const postMessageContact = async (data: any) => {
   const urlApi =
     process.env.NEXT_PUBLIC_ENV === 'DEV'
@@ -22,4 +25,20 @@ export const postMessageContact = async (data: any) => {
     console.log(err);
   }
   return undefined;
+};
+
+export const postInvite = async (data: IInvite) => {
+  const urlApi = `${websiteDomain}/api/invite`; // ?clubId=${data.clubId}
+  const headers = new Headers();
+  headers.set('method', 'POST');
+  headers.set('mode', 'GcorsET');
+  headers.set('credentials', 'include');
+  const options = {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(data),
+  };
+  const response = await fetch(urlApi, options);
+  const res = await response.json();
+  return res;
 };

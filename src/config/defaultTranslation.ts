@@ -140,9 +140,9 @@ export const defaultTranslationsEmailPassword = {
     EMAIL_PASSWORD_CONFIRM_PASSWORD_LABEL: 'Confirmer votre mot de passe',
     EMAIL_PASSWORD_CONFIRM_PASSWORD_PLACEHOLDER: 'Confirmer votre mot de passe',
 
-    EMAIL_PASSWORD_RESET_SUBMIT_PW_HEADER_TITLE: 'Changer votre mot de passe',
-    EMAIL_PASSWORD_RESET_SUBMIT_PW_HEADER_SUBTITLE:
-      'Entrer un nouveau mot de passe',
+    EMAIL_PASSWORD_RESET_SUBMIT_PW_HEADER_TITLE:
+      'Entrer un nouveau mot de passe', // 'Changer votre mot de passe',
+    EMAIL_PASSWORD_RESET_SUBMIT_PW_HEADER_SUBTITLE: '', // 'Entrer un nouveau mot de passe',
     EMAIL_PASSWORD_RESET_SUBMIT_PW_CHANGE_PW_BTN: 'Changer votre mot de passe',
     EMAIL_PASSWORD_RESET_PASSWORD_INVALID_TOKEN_ERROR:
       'Mise à jour du mot de passe invalide',

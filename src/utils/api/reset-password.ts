@@ -1,7 +1,7 @@
 export const resetPasswordEmail = async (inviteLink: string, email: string) => {
   const urlApi =
     process.env.NEXT_PUBLIC_ENV === 'DEV'
-      ? 'https://bouncesports.app.n8n.cloud/webhook-test/6b1413ce-7399-41a1-8f18-e03f49f83448'
+      ? 'https://bouncesports.app.n8n.cloud/webhook/6b1413ce-7399-41a1-8f18-e03f49f83448'
       : 'https://bouncesports.app.n8n.cloud/webhook/6b1413ce-7399-41a1-8f18-e03f49f83448';
   const headers = new Headers();
   headers.set(
