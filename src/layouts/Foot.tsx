@@ -3,10 +3,10 @@ import Link from 'next/link';
 const navigation = {
   main: [
     { name: 'FAQ', href: '/faq' },
-    { name: 'Privacy', href: '/privacy' },
+    { name: 'Privacy', href: 'https://www.bouncesports.co/privacy-policy' },
     {
       name: 'Contact',
-      href: '/mailto:hello@bouncesports.co?subject=Bounce%20Circular%20:%20Modifier%20l%27emplacment%20de%20la%20collecte',
+      href: '/contact',
     },
   ],
   social: [

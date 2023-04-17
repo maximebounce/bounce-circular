@@ -88,18 +88,19 @@ export default function Dashboard({ club }: { club: IClub }) {
     };
   });
 
+  const estimatedBallsInBox: number = 396;
   const numberBallsCollected = collectsSorted.map((collect) => {
     let nbBalls = 0;
     if (collect.numberOfBox === '1 carton') {
-      nbBalls = 400;
+      nbBalls = estimatedBallsInBox;
     } else if (collect.numberOfBox === '2 cartons') {
-      nbBalls = 2 * 400;
+      nbBalls = 2 * estimatedBallsInBox;
     } else if (collect.numberOfBox === '3 cartons') {
-      nbBalls = 3 * 400;
+      nbBalls = 3 * estimatedBallsInBox;
     } else if (collect.numberOfBox === '4 cartons') {
-      nbBalls = 4 * 400;
+      nbBalls = 4 * estimatedBallsInBox;
     } else if (collect.numberOfBox === '5 cartons') {
-      nbBalls = 5 * 400;
+      nbBalls = 5 * estimatedBallsInBox;
     }
     return { nbBalls };
   });
