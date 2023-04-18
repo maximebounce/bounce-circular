@@ -36,7 +36,7 @@ export default function NavBar() {
   if (scrollPosition > 0) {
     image = (
       <img
-        className="h-6"
+        className="h-6 pl-2"
         src="/assets/images/bounce_logo_white.png"
         alt="Bounce Sports logo"
       />
