@@ -152,7 +152,7 @@ export default function Contact() {
               htmlFor="phone-number"
               className="block text-sm font-semibold leading-6 text-gray-900"
             >
-              Numéro de téléphone
+              Numéro de GSM *
             </label>
             <div className="relative mt-2.5">
               {/* <div className="absolute inset-y-0 left-0 flex items-center">
@@ -180,6 +180,7 @@ export default function Contact() {
                 type="tel"
                 name="phone-number"
                 id="phone-number"
+                required
                 autoComplete="tel"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-400 placeholder:text-gray-400 sm:text-sm sm:leading-6"
               />

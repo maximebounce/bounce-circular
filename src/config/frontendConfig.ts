@@ -16,18 +16,30 @@ export const frontendConfig = () => {
               [data-supertokens~="container"] {
                 background-color: #F9F5F3;
                 box-shadow: none;
+                font-family: "Sohne", sans-serif;
               }
 
               [data-supertokens~=button] {
                     background-color: #0a121b;
                     border: 0px;
+                    width: 90%;
                     margin: 0 auto;
                     font-weight: 500;
-                    padding-top: 0.625rem;
-                    padding-bottom: 0.625rem;
+                    padding-top: 0.6rem;
+                    padding-bottom: 0.6rem;
                     padding-left: 1.25rem;
                     padding-right: 1.25rem;
                     border-radius: 1.5rem;
+                    font-family: "Sohne", sans-serif;
+                    font-size: 0.85rem;
+                }
+
+                [data-supertokens~="inputContainer"] {
+                  font-family: "Sohne", sans-serif;
+                }
+
+                [data-supertokens~="input"]{
+                  font-family: "Sohne", sans-serif;
                 }
             `,
           },
@@ -36,18 +48,30 @@ export const frontendConfig = () => {
               [data-supertokens~="container"] {
                 background-color: #F9F5F3;
                 box-shadow: none;
+                font-family: "Sohne", sans-serif;
               }
 
               [data-supertokens~=button] {
                     background-color: #0a121b;
                     border: 0px;
+                    width: 50%;
                     margin: 0 auto;
                     font-weight: 500;
-                    padding-top: 0.625rem;
-                    padding-bottom: 0.625rem;
+                    padding-top: 0.55rem;
+                    padding-bottom: 0.55rem;
                     padding-left: 1.25rem;
                     padding-right: 1.25rem;
                     border-radius: 1.5rem;
+                    font-family: "Sohne", sans-serif;
+                    font-size: 0.9rem;
+                }
+
+                [data-supertokens~="inputContainer"] {
+                  font-family: "Sohne", sans-serif;
+                }
+
+                [data-supertokens~="input"]{
+                  font-family: "Sohne", sans-serif;
                 }
             `,
           },
@@ -58,31 +82,47 @@ export const frontendConfig = () => {
               {
                 id: 'firstName',
                 label: 'first_name',
-                placeholder: 'John',
+                placeholder: '',
               },
               {
                 id: 'lastName',
                 label: 'last_name',
-                placeholder: 'Doe',
+                placeholder: '',
               },
             ],
             style: `
+                [data-supertokens~="input"]{
+                  font-family: "Sohne", sans-serif;
+                }
+
                 [data-supertokens~=button] {
                     background-color: #0a121b;
                     border: 0px;
                     width: 50%;
                     margin: 0 auto;
                     font-weight: 500;
-                    padding-top: 0.625rem;
-                    padding-bottom: 0.625rem;
+                    padding-top: 0.55rem;
+                    padding-bottom: 0.55rem;
                     padding-left: 1.25rem;
                     padding-right: 1.25rem;
                     border-radius: 1.5rem;
+                    font-family: "Sohne", sans-serif;
+                    font-size: 0.9rem;
                 }
 
                 [data-supertokens~="container"] {
                   background-color: #F9F5F3;
                   box-shadow: none;
+                  font-family: "Sohne", sans-serif;
+                }
+
+                [data-supertokens~="inputContainer"] {
+                  font-family: "Sohne", sans-serif;
+                  placeholder:none;
+                }
+
+                [data-supertokens~="input"]{
+                  font-family: "Sohne", sans-serif;
                 }
 
                 [data-supertokens~="link"] {
@@ -95,6 +135,18 @@ export const frontendConfig = () => {
             `,
           },
           signInForm: {
+            formFields: [
+              {
+                id: 'email',
+                label: 'Email',
+                placeholder: '',
+              },
+              {
+                id: 'password',
+                label: 'Mot de passe',
+                placeholder: '',
+              },
+            ],
             style: `
                 [data-supertokens~=button] {
                     background-color: #0a121b;
@@ -102,16 +154,26 @@ export const frontendConfig = () => {
                     width: 75%;
                     margin: 0 auto;
                     font-weight: 500;
-                    padding-top: 0.625rem;
-                    padding-bottom: 0.625rem;
+                    padding-top: 0.55rem;
+                    padding-bottom: 0.55rem;
                     padding-left: 1.25rem;
                     padding-right: 1.25rem;
                     border-radius: 1.5rem;
+                    font-family: "Sohne", sans-serif;
+                    font-size: 0.9rem;
                 }
 
                 [data-supertokens~="container"] {
                   background-color: #F9F5F3;
                   box-shadow: none;
+                }
+
+                [data-supertokens~="inputContainer"] {
+                  font-family: "Sohne", sans-serif;
+                }
+
+                [data-supertokens~="input"]{
+                  font-family: "Sohne", sans-serif;
                 }
 
                 [data-supertokens~="link"] {
