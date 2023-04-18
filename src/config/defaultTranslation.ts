@@ -103,7 +103,7 @@ export const defaultTranslationsEmailPassword = {
     EMAIL_PASSWORD_SIGN_IN_FOOTER_FORGOT_PW_LINK: 'Mot de passe oublié?',
     EMAIL_PASSWORD_SIGN_IN_SUBMIT_BTN: 'Me connecter',
     EMAIL_PASSWORD_SIGN_IN_WRONG_CREDENTIALS_ERROR:
-      "Le mot de passe ou l'email est incorrecte",
+      'Mot de passe ou adresse email incorrect',
 
     EMAIL_PASSWORD_SIGN_UP_HEADER_TITLE: "M'inscrire",
     EMAIL_PASSWORD_SIGN_UP_HEADER_SUBTITLE_START: 'Déjà un compte?',
@@ -123,10 +123,11 @@ export const defaultTranslationsEmailPassword = {
       'Nous allons envoyer un email pour mettre à jour votre mot de passe.',
     EMAIL_PASSWORD_RESET_SEND_FALLBACK_EMAIL: 'Votre compte',
     EMAIL_PASSWORD_RESET_SEND_BEFORE_EMAIL:
-      'Une demande de mise à jour de votre mot a été envoyé ',
+      'Une demande de mise à jour de votre mot de passe a été envoyée à ',
     EMAIL_PASSWORD_RESET_SEND_AFTER_EMAIL:
-      ', si il existe dans notre système. ',
-    EMAIL_PASSWORD_RESET_RESEND_LINK: "Renvoyez ou changez d'email",
+      'si l’adresse existe dans notre système. ',
+    EMAIL_PASSWORD_RESET_RESEND_LINK:
+      'Renvoyer le mail de mise à jour du mot de passe',
     EMAIL_PASSWORD_RESET_SEND_BTN: "M'envoyer un email",
     EMAIL_PASSWORD_RESET_SIGN_IN_LINK: 'Me connecter',
 

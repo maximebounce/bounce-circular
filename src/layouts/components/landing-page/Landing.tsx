@@ -14,17 +14,17 @@ export default function Landing() {
       <div className="bg-bounce-100 pb-20">
         <div className="mx-auto grid max-w-screen-xl px-4 pt-10 pb-8 lg:grid-cols-12 lg:gap-8 lg:py-16 lg:pt-28 xl:gap-0">
           <div className="mr-auto place-self-center lg:col-span-7">
-            <h1 className="mb-16 max-w-2xl pt-6 text-4xl font-bold leading-none tracking-tight dark:text-white md:text-4xl xl:text-5xl">
+            <h1 className="mb-16 max-w-2xl pt-6 text-4xl font-bold leading-none tracking-tight md:text-4xl xl:text-5xl">
               Bounce Circular
             </h1>
-            <h4 className="mb-8 max-w-2xl text-4xl leading-none tracking-tight dark:text-white md:text-xl xl:text-2xl">
+            <h4 className="mb-8 max-w-2xl text-3xl leading-none tracking-tight md:text-2xl xl:text-2xl">
               Service de recyclage des balles dans votre club
             </h4>
             <p className="mb-1 max-w-xl font-light md:text-lg lg:mb-10">
-              Le padel et le tennis sont ensemble un des sports les plus
-              polluants au monde. Bounce Circular permet l&apos;organisation
-              facile de la récolte et du recyclage des balles de votre club afin
-              de donner une seconde vie à celles-ci.
+              Le padel et le tennis font partie des sports les plus polluants au
+              monde. Bounce Circular permet l&apos;organisation facile de la
+              récolte et du recyclage des balles de votre club afin de donner
+              une seconde vie à celles-ci.
             </p>
             <div className="space-y-4 pt-10 sm:flex sm:space-y-0 sm:space-x-4">
               <Link

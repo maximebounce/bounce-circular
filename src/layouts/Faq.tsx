@@ -1,5 +1,6 @@
 import { Disclosure } from '@headlessui/react';
 import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/react/24/outline';
+import { useRef } from 'react';
 
 const faqs = [
   {
@@ -30,8 +31,9 @@ const faqs = [
 ];
 
 export default function FaqComponent() {
+  const myRef = useRef(null);
   return (
-    <div>
+    <div ref={myRef} id="bounce-faq">
       <div className="mx-auto max-w-screen-xl px-6 py-20 sm:py-24 lg:py-28 lg:px-8">
         <div className="mx-auto  divide-y divide-gray-900/10">
           <h2 className="text-2xl font-bold leading-10 tracking-tight text-gray-900">

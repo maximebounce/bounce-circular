@@ -28,6 +28,22 @@ export default function NewCollect({
     { value: '5 cartons', label: '5 cartons' },
   ];
 
+  // const reviewCollect = {
+  //   testimonial:
+  //     '"Le programme Bounce Circular est une évidence pour notre club. Tous les clubs devraient y participer."',
+  //   author: 'Sebastion Lecloux',
+  //   role: 'Coach & Gérant TC La Raquette de Wavre',
+  //   logo: '/assets/images/logo-clubs-100/LaRaquette.png'
+  // };
+
+  const reviewCollect = {
+    testimonial:
+      '"Le programme Bounce Circular est une évidence pour notre club. Tous les clubs devraient y participer."',
+    author: 'Antoine',
+    role: 'Administrateur du RTC 1310',
+    logo: '/assets/images/logo-clubs-100/LaHulpe.png',
+  };
+
   function addWorkdays(startDate: Date, n: number): Date {
     let workdays: number | null = n;
     const date = new Date(startDate);
@@ -134,8 +150,8 @@ export default function NewCollect({
           </h2>
           <p className="mt-2 text-lg leading-8 text-gray-600">
             <i>
-              Rendons ensemble le tennis & le padel plus éco-responsable balle
-              après balle.
+              Rendons ensemble le tennis & le padel éco-responsable, une balle à
+              la fois.
             </i>
           </p>
           <div className="mt-16 flex flex-col gap-16 sm:gap-y-20 lg:flex-row">
@@ -255,7 +271,7 @@ export default function NewCollect({
                       id="message"
                       name="message"
                       rows={4}
-                      className="block w-full rounded-md border-0 py-2 px-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border border-gray-300 py-2 px-3.5 text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -276,28 +292,25 @@ export default function NewCollect({
             <div className="lg:mt-6 lg:w-80 lg:flex-none">
               <img
                 className="hidden h-20 w-auto md:block"
-                src="/assets/images/logo-clubs-100/LaRaquette.png"
+                src={reviewCollect.logo}
                 alt=""
               />
               <figure className="mt-8">
                 <blockquote className="text-lg font-semibold leading-8 text-gray-900">
-                  <p>
-                    “Le programme Bounce Circular est une évidence pour notre
-                    club. Tous les clubs devraient y participer.”
-                  </p>
+                  <p>{reviewCollect.testimonial}</p>
                 </blockquote>
                 <figcaption className="mt-10 flex gap-x-6">
-                  <img
+                  {/* <img
                     src="/assets/images/avatar/seb_lecloux.png"
                     alt=""
                     className="h-12 w-12 flex-none rounded-full bg-gray-50"
-                  />
+                  /> */}
                   <div>
                     <div className="text-base font-semibold text-gray-900">
-                      Sebastion Lecloux
+                      {reviewCollect.author}
                     </div>
                     <div className="text-sm leading-6 text-gray-600">
-                      Coach & Gérant TC La Raquette de Wavre
+                      {reviewCollect.role}
                     </div>
                   </div>
                 </figcaption>

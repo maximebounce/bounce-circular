@@ -41,10 +41,10 @@ export default function Mission() {
                 aider à sensibiliser leurs membres à adopter des actions simples
                 pour rendre leurs sports éco-responsables. En plaçant des
                 poubelles de tri sur chaque terrain, le tri et le recyclage
-                devient simple, ce qui permet de récolter la (quasi) totalité
-                des balles dans les clubs. Bounce Circular s&apos;occupe ensuite
-                de la collecte des balles et de les recycler pour leur donner
-                une seconde vie.
+                deviennent simples, ce qui permet de récolter la (quasi)
+                totalité des balles dans les clubs. Bounce Circular
+                s&apos;occupe ensuite de la collecte des balles et de les
+                recycler pour leur donner une seconde vie.
               </p>
               {/* Le service Bounce Circular s&apos;inscrit dans cette démarche en
                 collaborant avec les fédérations, pour aider les clubs et leurs

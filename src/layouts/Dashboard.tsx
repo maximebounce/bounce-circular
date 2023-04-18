@@ -216,7 +216,7 @@ export default function Dashboard({ club }: { club: IClub }) {
                             item.name === currentTab
                               ? 'bg-bounce-300 text-white'
                               : 'text-white hover:bg-bounce-300 hover:text-white',
-                            'group flex items-center rounded-md px-2 py-2 text-base font-medium'
+                            'group flex items-center rounded-md px-2 py-2 text-base font-medium cursor-pointer'
                           )}
                           aria-current={
                             item.name === currentTab ? 'page' : undefined
@@ -236,7 +236,7 @@ export default function Dashboard({ club }: { club: IClub }) {
                           <a
                             key={item.name}
                             onClick={() => setCurrentTab(item.name)}
-                            className="group flex items-center rounded-md p-2 text-base font-medium text-white hover:bg-bounce-300 hover:text-white"
+                            className="group flex cursor-pointer items-center rounded-md p-2 text-base font-medium text-white hover:bg-bounce-300 hover:text-white"
                           >
                             <item.icon
                               className="mr-4 h-6 w-6 text-white"
@@ -283,7 +283,7 @@ export default function Dashboard({ club }: { club: IClub }) {
                       item.name === currentTab
                         ? 'bg-bounce-200 text-white'
                         : 'text-white hover:bg-bounce-300 hover:text-white',
-                      'group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6'
+                      'group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 cursor-pointer'
                     )}
                     aria-current={item.name === currentTab ? 'page' : undefined}
                   >
@@ -301,7 +301,7 @@ export default function Dashboard({ club }: { club: IClub }) {
                     <a
                       key={item.name}
                       onClick={() => setCurrentTab(item.name)}
-                      className="group flex items-center rounded-md p-2 text-sm font-medium leading-6 text-white hover:bg-bounce-300 hover:text-white"
+                      className="group flex cursor-pointer items-center rounded-md p-2 text-sm font-medium leading-6 text-white hover:bg-bounce-300 hover:text-white"
                     >
                       <item.icon
                         className="mr-4 h-6 w-6 text-white"

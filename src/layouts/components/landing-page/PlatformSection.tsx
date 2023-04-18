@@ -12,7 +12,7 @@ const features = [
     icon: CalendarDaysIcon,
   },
   {
-    name: "Gardez une vue sur l'historque de vos collectes.",
+    name: 'Gardez une vue sur l’historique de vos collectes.',
     description:
       "Un accès à l'historique des collectes et le statut pour chacune d'elle.",
     icon: ListBulletIcon,

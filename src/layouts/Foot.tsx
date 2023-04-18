@@ -1,8 +1,14 @@
 import Link from 'next/link';
 
+function scrollToMyRef(event: any) {
+  event.preventDefault();
+  const element: any = document.getElementById('bounce-faq');
+  element.scrollIntoView({ behavior: 'smooth' });
+}
+
 const navigation = {
   main: [
-    { name: 'FAQ', href: '/faq' },
+    { name: 'FAQ', href: '/' },
     { name: 'Privacy', href: 'https://www.bouncesports.co/privacy-policy' },
     {
       name: 'Contact',
@@ -47,28 +53,45 @@ export default function Foot() {
           className="-mb-6 columns-3 text-center sm:flex sm:justify-center sm:space-x-12"
           aria-label="Footer"
         >
-          {navigation.main.map((item) => (
-            <div key={item.name} className="pb-6">
-              <Link
-                href={item.href}
-                className="text-sm leading-6 text-gray-600"
-              >
-                {item.name}
-              </Link>
-            </div>
-          ))}
+          {navigation.main.map((item) => {
+            if (item.name === 'FAQ') {
+              return (
+                <div key={item.name} className="pb-6">
+                  <Link
+                    href={item.href}
+                    onClick={scrollToMyRef}
+                    className="text-sm leading-6 text-gray-600"
+                  >
+                    {item.name}
+                  </Link>
+                </div>
+              );
+            }
+            return (
+              <div key={item.name} className="pb-6">
+                <Link
+                  href={item.href}
+                  className="text-sm leading-6 text-gray-600"
+                >
+                  {item.name}
+                </Link>
+              </div>
+            );
+          })}
         </nav>
         <div className="mt-10 flex justify-center space-x-10">
-          {navigation.social.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="text-gray-400 hover:text-gray-500"
-            >
-              <span className="sr-only">{item.name}</span>
-              <item.icon className="h-6 w-6" aria-hidden="true" />
-            </a>
-          ))}
+          {navigation.social.map((item) => {
+            return (
+              <a
+                key={item.name}
+                href={item.href}
+                className="text-gray-400 hover:text-gray-500"
+              >
+                <span className="sr-only">{item.name}</span>
+                <item.icon className="h-6 w-6" aria-hidden="true" />
+              </a>
+            );
+          })}
         </div>
         <p className="mt-10 text-center text-xs leading-5 text-gray-500">
           <span>

@@ -1,5 +1,4 @@
 // import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
-import _ from 'lodash';
 import { useSearchParams } from 'next/navigation';
 import Router from 'next/router';
 import { useState } from 'react';
@@ -53,7 +52,7 @@ export default function Invite() {
   if (!clubId) {
     return (
       <>
-        <div className=" flex flex-col justify-center py-2 pb-8 sm:px-6 lg:px-8">
+        <div className="flex flex-col justify-center py-2 pb-8 sm:px-6 lg:px-8">
           <div className="mx-2 sm:mx-auto sm:w-full sm:max-w-md">
             <p className=" mt-2 text-center text-sm text-gray-700">
               Le lien n&apos;est pas valide. Veuillez vérifier le lien
@@ -78,7 +77,7 @@ export default function Invite() {
   return (
     <>
       <div className="flex flex-col justify-center py-2 pb-8 sm:px-6 lg:mb-24 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="px-2 sm:mx-auto sm:w-full sm:max-w-md">
           {/* <img
             className="mx-auto h-12 w-auto"
             src="/assets/images/bounce-logo.png"
@@ -101,7 +100,7 @@ export default function Invite() {
           </p>
         </div>
 
-        <div className="mt-2 sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="mt-2 bg-bounce-100 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="py-8 px-4 sm:rounded-lg sm:px-10">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
@@ -213,11 +212,31 @@ export default function Invite() {
               )}
               {errors && (
                 <div className="flex items-center justify-center">
-                  {_.map(errors, (err, index) => (
-                    <p key={index} role="alert" className="py-2 text-red-500">
-                      {err}
-                    </p>
-                  ))}
+                  {errors.map((err, index) => {
+                    if (err === 'Un compte existe déjà avec cette adresse') {
+                      return (
+                        <div
+                          key={index}
+                          className="flex-row items-center justify-center"
+                        >
+                          <p role="alert" className="text-red-500">
+                            {err}
+                          </p>
+                          <a
+                            href="/auth"
+                            className="cursor-pointer text-center text-gray-800"
+                          >
+                            <p role="alert">Se connecter</p>
+                          </a>
+                        </div>
+                      );
+                    }
+                    return (
+                      <p key={index} role="alert" className="py-2 text-red-500">
+                        {err}
+                      </p>
+                    );
+                  })}
                 </div>
               )}
             </form>
