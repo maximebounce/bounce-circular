@@ -6,7 +6,7 @@ const faqs = [
   {
     question: 'Comment faut-il faire une demande de collecte?',
     answer:
-      "Depuis votre espace club, cliquez sur le bouton 'Programmer une collecte' et remplissez le formulaire. Vous recevrez un email de confirmation.",
+      "Une fois inscrit au programme Bounce Circular, vous aurez accès à votre espace club, dans lequel vous pourrez cliquer le sur le bouton 'Programmer une collecte'. Remplissez ensuite le formulaire, et vous recevrez ensuite une email de confirmation.",
   },
   {
     question:
