@@ -1,7 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    './src/**/*.{js,ts,jsx,tsx}',
+    './node_modules/react-tailwindcss-datepicker/dist/index.esm.js',
+    './node_modules/tailwind-datepicker-react/dist/**/*.js',
+  ],
   theme: {
+    fontFamily: {
+      bounce: ['Sohne', 'Tahoma', 'Verdana', 'sans-serif'],
+      default: ['Helvetica', 'Arial', 'sans-serif'],
+    },
     fontSize: {
       xs: '0.75rem',
       sm: '0.875rem',
@@ -17,6 +25,7 @@ module.exports = {
     extend: {
       colors: {
         gray: {
+          50: '#f9fafb',
           100: '#f7fafc',
           200: '#edf2f7',
           300: '#e2e8f0',
@@ -37,6 +46,16 @@ module.exports = {
           700: '#2b6cb0',
           800: '#2c5282',
           900: '#2a4365',
+        },
+        bounce: {
+          100: '#F9F5F3',
+          200: '#0a121b',
+          300: '#E9351A',
+          400: '#114232',
+        },
+        bounceGray: {
+          100: '#acacac',
+          200: '#707070',
         },
       },
     },
