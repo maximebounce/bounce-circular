@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     fontFamily: {
       bounce: ['Sohne', 'Tahoma', 'Verdana', 'sans-serif'],
-      default: ['Helvetica', 'Arial', 'sans-serif'],
+      default: ['Sohne', 'Helvetica', 'Arial', 'sans-serif'],
     },
     fontSize: {
       xs: '0.75rem',
