@@ -120,7 +120,7 @@ export const defaultTranslationsEmailPassword = {
 
     EMAIL_PASSWORD_RESET_HEADER_TITLE: 'Changez votre mot de passe',
     EMAIL_PASSWORD_RESET_HEADER_SUBTITLE:
-      'Nous allons envoyer un email pour mettre à jour votre mot de passe.',
+      'Nous vous enverrons un email pour réinitialiser votre mot de passe.',
     EMAIL_PASSWORD_RESET_SEND_FALLBACK_EMAIL: 'Votre compte',
     EMAIL_PASSWORD_RESET_SEND_BEFORE_EMAIL:
       'Une demande de mise à jour de votre mot de passe a été envoyée à ',
@@ -128,7 +128,7 @@ export const defaultTranslationsEmailPassword = {
       'si l’adresse existe dans notre système. ',
     EMAIL_PASSWORD_RESET_RESEND_LINK:
       'Renvoyer le mail de mise à jour du mot de passe',
-    EMAIL_PASSWORD_RESET_SEND_BTN: "M'envoyer un email",
+    EMAIL_PASSWORD_RESET_SEND_BTN: 'Réinitialiser mon mot de passe',
     EMAIL_PASSWORD_RESET_SIGN_IN_LINK: 'Me connecter',
 
     EMAIL_PASSWORD_RESET_SUBMIT_PW_SUCCESS_HEADER_TITLE: 'Validé!',
