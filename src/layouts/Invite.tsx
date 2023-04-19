@@ -76,7 +76,7 @@ export default function Invite() {
 
   return (
     <>
-      <div className="flex flex-col justify-center py-2 pb-8 sm:px-6 lg:mb-24 lg:px-8">
+      <div className="flex flex-col justify-center bg-bounce-100 py-2 pb-8 sm:px-6 lg:mb-24 lg:px-8">
         <div className="px-2 sm:mx-auto sm:w-full sm:max-w-md">
           {/* <img
             className="mx-auto h-12 w-auto"
