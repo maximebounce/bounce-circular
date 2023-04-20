@@ -12,9 +12,9 @@ export default function Landing() {
   return (
     <div className=" dark:bg-gray-900">
       <div className="bg-bounce-100 pb-20">
-        <div className="mx-auto grid max-w-screen-xl px-4 pt-10 pb-8 lg:grid-cols-12 lg:gap-8 lg:py-16 lg:pt-28 xl:gap-0">
+        <div className="mx-auto grid max-w-screen-xl px-4 pt-10 pb-8 lg:grid-cols-12 lg:gap-8 lg:pt-24 lg:pb-12 xl:gap-0">
           <div className="mr-auto place-self-center lg:col-span-7">
-            <h1 className="mb-16 max-w-2xl pt-6 text-4xl font-bold leading-none tracking-tight md:text-4xl xl:text-5xl">
+            <h1 className="mb-16 max-w-2xl text-4xl font-bold leading-none tracking-tight md:text-4xl xl:text-5xl">
               Bounce Circular
             </h1>
             <h4 className="mb-8 max-w-2xl text-3xl leading-none tracking-tight md:text-2xl xl:text-2xl">
@@ -26,7 +26,7 @@ export default function Landing() {
               récolte et du recyclage des balles de votre club afin de donner
               une seconde vie à celles-ci.
             </p>
-            <div className="space-y-4 pt-10 sm:flex sm:space-y-0 sm:space-x-4">
+            <div className="space-y-4 pt-6 sm:flex sm:space-y-0 sm:space-x-4">
               <Link
                 href="/auth"
                 className="inline-flex w-full items-center justify-center rounded-3xl border-2 bg-bounce-300 px-5 py-2.5 text-center  font-medium text-white sm:w-auto"
@@ -50,6 +50,7 @@ export default function Landing() {
       {/* <Test></Test> */}
       <Features></Features>
       <PlatformSection></PlatformSection>
+      {/* <Bin></Bin> */}
       <Mission></Mission>
       <Faq></Faq>
     </div>

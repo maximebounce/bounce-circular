@@ -62,7 +62,7 @@ export default function PlatformSection() {
             </div>
           </div>
           <img
-            src="/assets/images/preview-2.png"
+            src="/assets/images/preview.png"
             alt="Product screenshot"
             className="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
             width={2432}
