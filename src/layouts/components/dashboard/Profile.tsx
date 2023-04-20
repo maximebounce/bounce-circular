@@ -12,7 +12,7 @@ export default function Profile({ club }: { club: IClub }) {
           Détails des informations de contact
         </p> */}
       </div>
-      <div className="border-t border-gray-200 px-4 py-5 sm:p-0">
+      <div className="border-t border-gray-200 py-5 sm:p-0">
         <dl className="sm:divide-y sm:divide-gray-200">
           <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
             <dt className="text-sm font-medium text-bounceGray-200">Club</dt>

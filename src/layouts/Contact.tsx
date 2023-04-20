@@ -57,8 +57,8 @@ export default function Contact() {
           Contact
         </h2>
         <p className="mt-2 text-sm leading-8 text-gray-800">
-          Vous souhaitez nous contacter? Vous pouvez nous envoyer un email
-          depuis ce formulaire. Nous vous répondons au plus vite.
+          Une question, une demande? L&apos;équipe y mettra toute son attention
+          et se fera un plaisir de vous répondre.
         </p>
       </div>
       <form onSubmit={handleSubmit} className="mx-auto mt-6 max-w-2xl sm:mt-6">

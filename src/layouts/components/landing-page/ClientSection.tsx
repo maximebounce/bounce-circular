@@ -23,8 +23,13 @@ export default function ClientSection() {
   return (
     <div>
       {/* <p className="mx-auto max-w-screen-xl pb-4 text-lg lg:pb-8">
-        De nombreux clubs nous font confiance
+        Ils nous font confiance
       </p> */}
+      <div className="mx-auto text-center">
+        <p className="text-2xl font-bold tracking-tight sm:text-3xl">
+          Ils nous font confiance
+        </p>
+      </div>
       <div className="mx-auto max-w-screen-xl py-8 lg:pb-16">
         <div className="grid grid-cols-2 place-items-center gap-8 text-gray-500 dark:text-gray-400 sm:grid-cols-3 sm:gap-12 lg:grid-cols-7">
           {clubs.map((clubName, index) => (

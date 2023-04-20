@@ -126,7 +126,7 @@ export default function Dashboard({ club }: { club: IClub }) {
     //     'Pas de limite (durant la phase pilote)',
     // },
     {
-      name: 'Estimation nombre de balles recyclées',
+      name: 'Nombre de balles récoltées',
       href: '#',
       icon: CalculatorIcon,
       amount: estimationBallsCollected,

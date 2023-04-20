@@ -26,6 +26,17 @@ const faqs = [
     answer:
       "Oui, Bounce compense toutes les émissions de CO2 liées à l'opération afin de la rendre 100% neutre en carbone.",
   },
+  {
+    question: 'Quelles sont les dimensions du carton de collecte?',
+    answer:
+      'Le carton fait 60cm x 50cm x 40cm et arrive plié afin de prendre le moins de place possible. Nous mettons également à disposition un rouleau de papier collant afin de fermer celui-ci de manière écologique.',
+  },
+  {
+    question:
+      'Quelles sont les dimensions  et caractéristiques de la poubelle Bounce?',
+    answer:
+      'La poubelle fait 1m de hauteur sur 40cm de large. Les poubelles peuvent être accrochées au grillage et peuvent également être attachées les unes aux autres. ',
+  },
 
   // More questions...
 ];
