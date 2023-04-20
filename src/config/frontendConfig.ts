@@ -54,7 +54,7 @@ export const frontendConfig = () => {
               [data-supertokens~=button] {
                     background-color: #0a121b;
                     border: 0px;
-                    width: 50%;
+                    width: 90%;
                     margin: 0 auto;
                     font-weight: 500;
                     padding-top: 0.55rem;
