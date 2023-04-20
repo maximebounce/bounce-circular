@@ -105,8 +105,8 @@ export default function NewCollect({
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
-    if (!valueDate) {
-      alert('No date selected');
+    if (!valueDate || !valueDate.startDate) {
+      alert('Veuillez sélectionner une date.');
       return;
     }
     const userMetadata = await getUserMetaDataOnly();
