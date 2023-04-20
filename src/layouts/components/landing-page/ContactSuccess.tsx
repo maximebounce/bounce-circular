@@ -10,7 +10,8 @@ export default function ContactSuccess() {
             <br />
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-bounceGray-200">
-            Merci pour votre demande concernant le progamme Bounce Circular. ♻️
+            Merci pour votre demande, on regarde les derniers highlights
+            d&apos;Alcaraz et on revient vers vous!
           </p>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-bounceGray-200">
             Nous reviendrons prochainement vers vous.
