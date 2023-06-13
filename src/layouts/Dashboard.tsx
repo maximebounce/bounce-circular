@@ -24,6 +24,7 @@ import type { IClub } from '@/interfaces/club';
 import type { ICollect } from '@/interfaces/collect';
 
 import Invoices from './components/dashboard/Invoices';
+import NewCardBox from './components/dashboard/NewCardBox';
 import NewCollect from './components/dashboard/NewCollect';
 import Profile from './components/dashboard/Profile';
 import Contact from './Contact';
@@ -89,7 +90,11 @@ export default function Dashboard({ club }: { club: IClub }) {
   });
 
   const estimatedBallsInBox: number = 396;
-  const numberBallsCollected = collectsSorted.map((collect) => {
+  const collectsFiltered = _.filter(
+    collectsSorted,
+    (collect) => collect.status !== 'Collecte enregistrée'
+  );
+  const numberBallsCollected = collectsFiltered.map((collect) => {
     let nbBalls = 0;
     if (collect.numberOfBox === '1 carton') {
       nbBalls = estimatedBallsInBox;
@@ -497,8 +502,15 @@ export default function Dashboard({ club }: { club: IClub }) {
                     </button> */}
                       <button
                         type="button"
+                        onClick={() => setCurrentTab('newCardBox')}
+                        className="inline-flex items-center rounded-xl border border-bounce-300 bg-white px-3 py-2 text-sm font-semibold text-bounce-300 shadow-sm hover:bg-bounce-300 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+                      >
+                        Commander des cartons
+                      </button>
+                      <button
+                        type="button"
                         onClick={() => setCurrentTab('newCollect')}
-                        className="inline-flex items-center rounded-md bg-bounce-300 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-bounce-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+                        className="inline-flex items-center rounded-xl bg-bounce-300 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:border hover:border-bounce-300 hover:bg-white hover:text-bounce-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
                       >
                         Programmer une collecte
                       </button>
@@ -729,6 +741,12 @@ export default function Dashboard({ club }: { club: IClub }) {
               clubName={club.clubName}
               clubId={club.clubId}
             ></NewCollect>
+          )}
+          {currentTab === 'newCardBox' && (
+            <NewCardBox
+              clubName={club.clubName}
+              clubId={club.clubId}
+            ></NewCardBox>
           )}
         </div>
       </div>

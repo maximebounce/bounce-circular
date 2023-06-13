@@ -47,6 +47,15 @@ module.exports = withBundleAnalyzer({
           'https://bouncesports.app.n8n.cloud/webhook/193ad431-9c55-4679-bd8e-4b0f3bdc213f',
       },
       {
+        source: '/api/orderCardbox/n8n/test',
+        destination:
+          'https://bouncesports.app.n8n.cloud/webhook-test/order-cardbox',
+      },
+      {
+        source: '/api/orderCardbox/n8n',
+        destination: 'https://bouncesports.app.n8n.cloud/webhook/order-cardbox',
+      },
+      {
         source: '/api/contact/n8n/test',
         destination:
           'https://bouncesports.app.n8n.cloud/webhook-test/018447c2-30c5-40ed-8ed2-a2e25b59442f',

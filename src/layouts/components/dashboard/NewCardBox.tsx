@@ -1,17 +1,15 @@
 import { Listbox, Transition } from '@headlessui/react';
 import { ChevronUpDownIcon } from '@heroicons/react/20/solid';
-import moment from 'moment';
 import React, { Fragment, useState } from 'react';
-// import Datepicker from 'tailwind-datepicker-react'; // https://github.com/OMikkel/tailwind-datepicker-react;
-import Datepicker from 'react-tailwindcss-datepicker'; // https://react-tailwindcss-datepicker.vercel.app/advanced-features#localization
-import type { DateValueType } from 'react-tailwindcss-datepicker/dist/types';
 
+// import Datepicker from 'tailwind-datepicker-react'; // https://github.com/OMikkel/tailwind-datepicker-react;
+// https://react-tailwindcss-datepicker.vercel.app/advanced-features#localization
 import { websiteDomain } from '@/config/appInfo';
-import type { INewCollect } from '@/interfaces/collect';
-import { postCollect } from '@/utils/api/collect';
+import type { INewOrderCardBox } from '@/interfaces/cardBox';
+import { postOrderCardBox } from '@/utils/api/cardBox';
 import { getUserMetaDataOnly } from '@/utils/api/user';
 
-import CollectSuccess from './CollectSuccess';
+import OrderCardBoxSuccess from './OrderCardBoxSuccess';
 
 export default function NewCollect({
   clubName,
@@ -20,21 +18,10 @@ export default function NewCollect({
   clubName: string;
   clubId: string;
 }) {
-  const collectOptions: { value: string; label: string }[] = [
-    { value: '1 carton', label: '1 carton' },
-    { value: '2 cartons', label: '2 cartons' },
+  const orderOptions: { value: string; label: string }[] = [
     { value: '3 cartons', label: '3 cartons' },
-    { value: '4 cartons', label: '4 cartons' },
     { value: '5 cartons', label: '5 cartons' },
   ];
-
-  // const reviewCollect = {
-  //   testimonial:
-  //     '"Le programme Bounce Circular est une évidence pour notre club. Tous les clubs devraient y participer."',
-  //   author: 'Sebastion Lecloux',
-  //   role: 'Coach & Gérant TC La Raquette de Wavre',
-  //   logo: '/assets/images/logo-clubs-100/LaRaquette.png'
-  // };
 
   const reviewCollect = {
     testimonial:
@@ -44,57 +31,29 @@ export default function NewCollect({
     logo: '/assets/images/logo-clubs-100/LaHulpe.png',
   };
 
-  function addWorkdays(startDate: Date, n: number): Date {
-    let workdays: number | null = n;
-    const date = new Date(startDate);
-
-    while (workdays && workdays > 0) {
-      date.setDate(date.getDate() + 1);
-
-      if (date.getDay() !== 0 && date.getDay() !== 6) {
-        workdays -= 1;
-      }
-    }
-    return date;
-  }
   function setTextButton(value: string) {
     if (value === 'NOT_SEND') {
-      return 'Je confirme la collecte';
+      return 'Je confirme la commande';
     }
     if (value === 'IN_PROGRESS') {
       return 'En cours ...';
     }
     if (value === 'SUCCESS') {
-      return 'Collecte enregistrée ✔️';
+      return 'La demande de cartons est enregistrée ✔️';
     }
     if (value === 'FAILURE') {
-      return "Erreur lors de l'enregistrement de la collecte";
+      return "Erreur lors de l'enregistrement de la commande";
     }
-    return 'Je confirme la collecte';
+    return 'Je confirme la demande';
   }
 
-  const minDate = addWorkdays(new Date(), 2);
-  const defaultDate = addWorkdays(new Date(), 3);
-  const maxDate = addWorkdays(new Date(), 10);
-  const [valueDate, setValue] = useState<DateValueType>({
-    startDate: defaultDate,
-    endDate: defaultDate,
-  });
-
   const [box, setBox] = useState<string>(
-    collectOptions[0] ? collectOptions[0].value : '1 carton'
+    orderOptions[0] ? orderOptions[0].value : '3 cartons'
   );
   const [description, setText] = useState<string>('');
-  // const [date, setDate] = useState<Date | undefined>(defaultDate);
-  // const [show, setShow] = useState<boolean>(false);
-  const [collectRequestStatus, setCollectRequestStatus] =
+  const [orderRequestStatus, setOrderRequestStatus] =
     useState<string>('NOT_SEND');
-  // const handleClose = (state: boolean) => {
-  //   setShow(state);
-  // };
-  const handleValueChange = (value: DateValueType) => {
-    setValue(value);
-  };
+
   const handleChangeText = (textInput: string) => {
     setText(textInput);
   };
@@ -105,8 +64,8 @@ export default function NewCollect({
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
-    if (!valueDate || !valueDate.startDate) {
-      alert('Veuillez sélectionner une date.');
+    if (!box) {
+      alert('Veuillez sélectionner le nombre de cartons à envoyer.');
       return;
     }
     const userMetadata = await getUserMetaDataOnly();
@@ -115,9 +74,8 @@ export default function NewCollect({
       name: userMetadata.first_name || null,
       memberId: userMetadata.id,
     };
-    const collectRequest: INewCollect = {
+    const orderRequest: INewOrderCardBox = {
       clubId,
-      dateCollect: moment(valueDate.startDate).format('yyyy-MM-DD'),
       clubName,
       numberOfBox: box,
       description,
@@ -125,20 +83,20 @@ export default function NewCollect({
       urlRedirect: `${websiteDomain}/auth`,
     };
     try {
-      setCollectRequestStatus('IN_PROGRESS');
-      const newCollect: any = await postCollect(collectRequest);
-      if (newCollect && newCollect[0] && newCollect[0].clubId) {
-        setCollectRequestStatus('SUCCESS');
+      setOrderRequestStatus('IN_PROGRESS');
+      const newOrder: any = await postOrderCardBox(orderRequest);
+      if (newOrder && newOrder[0] && newOrder[0].clubId) {
+        setOrderRequestStatus('SUCCESS');
       } else {
-        setCollectRequestStatus('FAILURE');
+        setOrderRequestStatus('FAILURE');
       }
     } catch (e: any) {
-      setCollectRequestStatus('FAILURE');
+      setOrderRequestStatus('FAILURE');
     }
   };
 
-  if (collectRequestStatus === 'SUCCESS') {
-    return <CollectSuccess></CollectSuccess>;
+  if (orderRequestStatus === 'SUCCESS') {
+    return <OrderCardBoxSuccess></OrderCardBoxSuccess>;
   }
 
   return (
@@ -146,7 +104,9 @@ export default function NewCollect({
       <div className="relative isolate bg-white py-16 px-6 sm:py-16 lg:px-8">
         <div className="mx-auto max-w-xl lg:max-w-4xl">
           <h2 className="text-4xl font-bold tracking-tight text-gray-900">
-            Demander une collecte de balles dans votre club
+            {/* Vous n&apos;avez plus de boites en cartons?  */}
+            Commander des nouvelles caisses en carton pour la collecte des
+            balles
           </h2>
           <p className="mt-2 text-lg leading-8 text-gray-600">
             <i>
@@ -162,19 +122,9 @@ export default function NewCollect({
                     htmlFor="first-name"
                     className="block text-sm font-semibold leading-6 text-gray-900"
                   >
-                    Nombre de cartons à collecter
+                    Nombre de caisses en carton à livrer
                   </label>
                   <div className="mt-2.5">
-                    {/* <select
-                      onChange={(e) => setBox(e.target.value)}
-                      id="location"
-                      name="location"
-                      className="block w-full rounded-md border-0 bg-gray-50 py-3 px-3.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:leading-6"
-                    >
-                      {collectOptions.map((value, key) => (
-                        <option key={key}>{value.label}</option>
-                      ))}
-                    </select> */}
                     <Listbox value={box} onChange={setBox}>
                       {({ open }) => (
                         <div className="relative mt-2">
@@ -196,7 +146,7 @@ export default function NewCollect({
                             leaveTo="opacity-0"
                           >
                             <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                              {collectOptions.map((value, key) => (
+                              {orderOptions.map((value, key) => (
                                 <Listbox.Option
                                   key={key}
                                   className={({ active }) =>
@@ -228,41 +178,13 @@ export default function NewCollect({
                     </Listbox>
                   </div>
                 </div>
-                <div>
-                  <label
-                    htmlFor="last-name"
-                    className="block text-sm font-semibold leading-6 text-gray-900"
-                  >
-                    Date de la collecte
-                  </label>
-                  <div className="mt-2.5 bg-white">
-                    <Datepicker
-                      primaryColor={'red'}
-                      i18n={'fr'}
-                      inputClassName="ring-1 ring-gray-300 text-black focus:ring-0 shadow-none focus:shadow-none"
-                      useRange={false}
-                      asSingle={true}
-                      value={valueDate}
-                      displayFormat={'DD/MM/YYYY'}
-                      onChange={handleValueChange}
-                      minDate={minDate}
-                      maxDate={maxDate}
-                      disabledDates={[
-                        {
-                          startDate: '2023-04-08',
-                          endDate: '2023-04-08',
-                        },
-                      ]}
-                    />
-                  </div>
-                </div>
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="message"
                     className="block text-sm font-semibold leading-6 text-gray-900"
                   >
-                    Informations complémentaires pour le transporteur (ex: où se
-                    trouve le carton)
+                    Informations complémentaires pour le livreur (ex: où déposer
+                    les cartons si personne n&apos;est présent)
                   </label>
                   <div className="mt-2.5">
                     <textarea
@@ -280,12 +202,12 @@ export default function NewCollect({
                 <button
                   type="submit"
                   disabled={
-                    collectRequestStatus === 'SUCCESS' ||
-                    collectRequestStatus === 'IN_PROGRESS'
+                    orderRequestStatus === 'SUCCESS' ||
+                    orderRequestStatus === 'IN_PROGRESS'
                   }
                   className="block w-full rounded-xl bg-bounce-300 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
                 >
-                  {setTextButton(collectRequestStatus)}
+                  {setTextButton(orderRequestStatus)}
                 </button>
               </div>
             </form>
