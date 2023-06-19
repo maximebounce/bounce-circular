@@ -1,16 +1,15 @@
-export default function CollectSuccess() {
+export default function OrderCardBoxSuccess() {
   return (
     <div className="bg-white">
       <div className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-3xl">
-            Votre demande de collecte de balles a été enregistrée.
+            Votre commande de caisses en carton a été enregistrée.
             <br />
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-bounceGray-200">
-            Merci pour votre participation au progamme Bounce Circular. Chaque
-            jour, grâce à vous, nous rendons le tennis et le padel plus
-            éco-responsables. ♻️
+            Merci pour votre commande. Chaque jour, grâce à vous, nous rendons
+            le tennis et le padel plus éco-responsables. ♻️
           </p>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-bounceGray-200">
             Vous recevrez prochainement un email de confirmation.
