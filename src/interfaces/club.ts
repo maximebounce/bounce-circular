@@ -13,4 +13,5 @@ export type IClub = {
   details?: string;
   localisation?: string;
   initial?: string;
+  odooId?: number;
 };

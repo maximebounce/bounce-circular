@@ -17,11 +17,12 @@ import {
 import _, { orderBy } from 'lodash';
 import moment from 'moment';
 import Link from 'next/link';
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { signOut } from 'supertokens-auth-react/recipe/emailpassword';
 
 import type { IClub } from '@/interfaces/club';
 import type { ICollect } from '@/interfaces/collect';
+import type { IInvoice } from '@/interfaces/invoice';
 
 import Invoices from './components/dashboard/Invoices';
 import NewCardBox from './components/dashboard/NewCardBox';
@@ -37,12 +38,40 @@ function classNames(...classes: string[]) {
 export default function Dashboard({ club }: { club: IClub }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [currentTab, setCurrentTab] = useState('Dashboard');
+  const [invoices, setInvoiceData] = useState<IInvoice[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   async function logoutClicked() {
     await signOut();
     window.location.href = '/';
     // redirectToAuth();
   }
+
+  useEffect(() => {
+    async function fetchInvoices() {
+      if (club.odooId) {
+        try {
+          setLoading(true);
+          const response = await fetch(`/api/invoices/${club.odooId}`);
+          if (!response.ok) {
+            throw new Error(`Erreur API: ${response.status}`);
+          }
+          const data: IInvoice[] = await response.json();
+          setInvoiceData(data);
+        } catch (err: any) {
+          setError(err.message);
+        } finally {
+          setLoading(false);
+        }
+      } else {
+        setError('Id Odoo manquant');
+        setLoading(false);
+      }
+    }
+
+    fetchInvoices();
+  }, []);
 
   const navigation = [
     { name: 'Dashboard', icon: HomeIcon },
@@ -735,7 +764,13 @@ export default function Dashboard({ club }: { club: IClub }) {
           )}
           {currentTab === 'Profil' && <Profile club={club}></Profile>}
           {currentTab === 'FAQ' && <FaqComponent></FaqComponent>}
-          {currentTab === 'Factures' && <Invoices></Invoices>}
+          {currentTab === 'Factures' && (
+            <Invoices
+              invoices={invoices}
+              error={error}
+              loading={loading}
+            ></Invoices>
+          )}
           {currentTab === 'Contact' && <Contact></Contact>}
           {currentTab === 'newCollect' && (
             <NewCollect
