@@ -38,6 +38,7 @@ m256 -549 c-3 -10 -8 -31 -12 -48 -10 -45 -51 -124 -95 -182 -61 -82 -198
         </div>
         {/* </div>
         </div> */}
+        <p>Le chargement des données peut prendre quelques secondes.</p>
       </section>
 
       <span className="sr-only">Loading...</span>
