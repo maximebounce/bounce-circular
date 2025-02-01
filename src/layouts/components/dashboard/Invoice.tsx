@@ -24,7 +24,7 @@ export default function Invoice({ invoice }: { invoice: IInvoice }) {
   return (
     <li
       key={invoice.id}
-      className="flex flex-col items-start justify-between gap-y-1 py-2 sm:flex-row sm:items-center sm:gap-x-4 sm:py-3" // Compact vertical spacing, responsive layout
+      className="flex flex-col items-start justify-between gap-y-1 py-2 sm:flex-row sm:items-center sm:gap-x-4 sm:py-3"
     >
       <div className="min-w-0 flex-1">
         <div className="flex items-start gap-x-2">
@@ -40,23 +40,25 @@ export default function Invoice({ invoice }: { invoice: IInvoice }) {
             {convertStatusPayment(invoice.payment_state)}
           </p>
         </div>
-        <div className="flex items-center gap-x-2 text-xs text-gray-500">
-          <p className="whitespace-nowrap">
-            Date de la facture{' '}
-            <time dateTime={invoice.invoice_date}>{invoice.invoice_date}</time>
-          </p>
-          <p className="truncate">Créé par Gregory M.</p>
+        <div className="flex items-center justify-between gap-x-4 text-xs text-gray-500">
+          <div className="flex items-center gap-x-2">
+            <p className="whitespace-nowrap">
+              Date de la facture{' '}
+              <time dateTime={invoice.invoice_date}>
+                {invoice.invoice_date}
+              </time>
+            </p>
+            <p className="truncate">Créé par Gregory M.</p>
+          </div>
+          <a
+            href={invoice.url}
+            target="_blank"
+            className="rounded-md bg-white px-2 py-1 text-center text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+          >
+            Voir la facture
+            <span className="sr-only">, {invoice.name}</span>
+          </a>
         </div>
-      </div>
-      <div className="flex-none">
-        <a
-          href={invoice.url}
-          target="_blank"
-          className="w-full rounded-md bg-white px-2 py-1 text-center text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:block sm:w-auto"
-        >
-          Voir la facture
-          <span className="sr-only">, {invoice.name}</span>
-        </a>
       </div>
     </li>
   );
