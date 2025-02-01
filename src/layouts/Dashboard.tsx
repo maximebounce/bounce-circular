@@ -107,6 +107,8 @@ export default function Dashboard({ club }: { club: IClub }) {
       nbBalls = 4 * estimatedBallsInBox;
     } else if (collect.numberOfBox === '5 cartons') {
       nbBalls = 5 * estimatedBallsInBox;
+    } else if (collect.numberOfBox === '10 cartons') {
+      nbBalls = 10 * estimatedBallsInBox;
     }
     return { nbBalls };
   });
