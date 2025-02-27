@@ -143,7 +143,9 @@ export default function Dashboard({ club }: { club: IClub }) {
       name: 'Date de fin du contrat',
       href: '#',
       icon: CalendarDaysIcon,
-      amount: moment(club.startingDate).utc().format('DD/MM/YYYY'),
+      amount: club.startingDate
+        ? moment(club.startingDate).utc().format('DD/MM/YYYY')
+        : '/',
     },
   ];
 

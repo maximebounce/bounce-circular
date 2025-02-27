@@ -19,7 +19,6 @@ export default function NewCollect({
   clubId: string;
 }) {
   const orderOptions: { value: string; label: string }[] = [
-    { value: '3 cartons', label: '3 cartons' },
     { value: '5 cartons', label: '5 cartons' },
     { value: '10 cartons', label: '10 cartons' },
   ];
